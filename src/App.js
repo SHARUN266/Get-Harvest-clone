@@ -1,8 +1,12 @@
-import { Heading } from "@chakra-ui/react";
+import { Box, Heading } from "@chakra-ui/react";
+import Navbar from "./Sharun/Navbar/Navbar";
 
 function App() {
   return <>
-  <Heading>Lets make our project rememberable...</Heading>
+  <Navbar/>
+  <Box    h="300vh">
+
+  </Box>
   </>;
 }
 
