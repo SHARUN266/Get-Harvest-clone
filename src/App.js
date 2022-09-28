@@ -1,13 +1,21 @@
-import { Box, Heading } from "@chakra-ui/react";
-import Navbar from "./Sharun/Navbar/Navbar";
+import React from 'react';
+import './App.css';
+
+
+
 
 function App() {
-  return <>
-  <Navbar/>
-  <Box    h="300vh">
+  return (
+    <div className="App">
+    
+    
 
-  </Box>
-  </>;
+   
+    </div>
+
+     
+
+  );
 }
 
 export default App;
