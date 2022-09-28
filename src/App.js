@@ -1,9 +1,11 @@
-import { Heading } from "@chakra-ui/react";
+import Dashboard from "./components/Dashboard/Dashboard";
 
 function App() {
-  return <>
-  <Heading>Lets make our project rememberable...</Heading>
-  </>;
+  return (
+    <>
+      <Dashboard />
+    </>
+  );
 }
 
 export default App;

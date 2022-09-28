@@ -1,0 +1,44 @@
+.parentFlex {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.childFlex {
+  width: 45%;
+  gap: auto;
+}
+
+.buttons {
+  padding: 15px;
+  border-radius: 15px;
+  border: none;
+  color: white;
+  font-weight: 1000;
+}
+.buttonsFlex {
+  display: flex;
+  width: 70%;
+  gap: 8%;
+  justify-content: center;
+  align-items: flex-start;
+}
+.span {
+  font-weight: bold;
+}
+
+/* brand image */
+
+.imageFlex {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  align-items: center;
+  opacity: 40%;
+  gap: auto;
+}
+
+.brandImage {
+  /* width: 5%; */
+}
