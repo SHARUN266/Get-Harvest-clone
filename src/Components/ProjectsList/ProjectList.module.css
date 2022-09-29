@@ -1,0 +1,35 @@
+.projectList{
+    width: 95%;
+    margin: 20px auto;
+}
+.banner{
+    height: 400px;
+    padding: 20px;
+    background-color: #eee;
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+    justify-content: center;
+    align-items: center;
+}
+.banner>p{
+    margin: auto;
+    color: rgb(106, 103, 103);
+    font-size: 18px;
+    font-weight: 400;
+}
+.projColHeadBox{
+    height: 40px;
+    background-color: #eee;
+    border: 1px solid #bbb;
+    border-left: 0;
+    border-right: 0;
+}
+.projColHead>p{
+    color:grey;
+    font-size: 14px;
+    text-align: left;
+}
+.projColHead>p:nth-child(1){
+    border: 1px solid black;   
+}

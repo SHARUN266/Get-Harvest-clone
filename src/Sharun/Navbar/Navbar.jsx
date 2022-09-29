@@ -6,22 +6,14 @@ import {
   Button,
   Stack,
   Collapse,
-  Icon,
   Link,
   Popover,
   PopoverTrigger,
-  PopoverContent,
   useColorModeValue,
-  useBreakpointValue,
   useDisclosure,
   Spacer,
 } from "@chakra-ui/react";
-import {
-  HamburgerIcon,
-  CloseIcon,
-  ChevronDownIcon,
-  ChevronRightIcon,
-} from "@chakra-ui/icons";
+import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import Svg from "./Svg";
 
 import { useState } from "react";
@@ -70,7 +62,7 @@ export default function Navbar() {
             <Svg />
           </Box>
 
-          <Flex  display={{ base: "none", md: "flex" }} ml={2}>
+          <Flex display={{ base: "none", md: "flex" }} ml={2}>
             <DesktopNav />
           </Flex>
         </Flex>
@@ -121,7 +113,7 @@ export default function Navbar() {
             bg={"gray"}
             onClick={onToggle}
             icon={
-              isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon w={5} h={5} />
+              isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon bg="none" color="#f2f2f2" w={5} h={5} />
             }
             variant={"ghost"}
             aria-label={"Toggle Navigation"}
@@ -137,12 +129,10 @@ export default function Navbar() {
 }
 
 const DesktopNav = () => {
- 
-
   return (
     <Stack direction={"row"} spacing={1}>
       {NAV_ITEMS.map((navItem) => (
-        <Box color={'#111'} key={navItem.label}>
+        <Box color={"#111"} key={navItem.label}>
           <Popover placement={"bottom-start"}>
             <PopoverTrigger>
               <Link
@@ -150,7 +140,6 @@ const DesktopNav = () => {
                 href={navItem.href ?? "#"}
                 fontSize={"1.2vw"}
                 fontWeight={400}
-              
                 _hover={{
                   color: "font",
                 }}
@@ -168,7 +157,7 @@ const DesktopNav = () => {
 const DesktopSubNav = ({ label, href, subLabel }) => {
   return (
     <Link href={href} role={"group"} display={"block"} p={2} rounded={"md"}>
-      <Stack  direction={"row"} align={"center"}>
+      <Stack direction={"row"} align={"center"}>
         <Box>
           <Text
             transition={"all .3s ease"}
@@ -197,14 +186,21 @@ const MobileNav = () => {
         <Spacer />
         <Text color="#f2f2f2">Get the mobile app:</Text>
         <Stack mt="2%" direction={"row"} justifyContent="space-between">
-          <MyButton w="50%">
-            {" "}
-            <BsApple /> iPhone{" "}
-          </MyButton>
-          <MyButton w="50%">
-            {" "}
-            <AiFillAndroid /> Android
-          </MyButton>
+         
+            <MyButton w="50%">
+              {" "}
+              <BsApple /> <a href="https://apps.apple.com/us/app/harvest-time-expense-tracker/id355395846">iPhone</a>
+            </MyButton>
+          
+
+         
+            <MyButton w="50%">
+              {" "}
+              
+              <AiFillAndroid /> <a href="https://play.google.com/store/apps/details?id=com.harvestapp">Android</a>
+              
+            </MyButton>
+       
         </Stack>
       </Flex>
     </Stack>
