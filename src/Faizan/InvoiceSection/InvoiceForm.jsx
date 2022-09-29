@@ -1,19 +1,54 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { saveAs } from 'file-saver';
-import { Box, Flex, Heading, Input, Table, TableContainer, Tbody, Td, Text, Tfoot, Th, Thead, Tr } from '@chakra-ui/react';
-
+import { Box, Button, Flex, Heading, Input, Select, Table, TableContainer, Tbody, Td, Text, Textarea, Th, Thead, Tr } from '@chakra-ui/react';
+import { Link, Navigate } from 'react-router-dom';
 
 class InvoiceForm extends Component {
+   
   state = {
-    name: '',
-    receiptId: 0,
-    price1: 0,
-    price2: 0,
+    client: 'client',
+    invoiceId: 0,
+    dueDate: 0,
+    items:[
+      {
+        id:1,
+        price: 0,
+        service: "",
+        quantity: 1,
+        description: '',
+        get amt() {
+          return Number(this.price)*Number(this.quantity);
+     }
+      }
+      
+    ]
+  }
+  handleChange = ({ target: { value, name }}) => this.setState({ [name]: value })
+  handleItemsChange=({ target: { value, name }},id)=>{
+    this.state.items[id-1][name]=value
+     this.setState({...this.state})
+  }
+  handleClick=(id)=>{
+    this.state.items=this.state.items.filter((el)=>{
+       return (el.id!==id) 
+     })
+    this.setState({...this.state})
   }
 
-  handleChange = ({ target: { value, name }}) => this.setState({ [name]: value })
-
+  handleAdd=()=>{
+  this.state.items.push({
+      id:this.state.items.length+1,
+      price: 0,
+      service: "",
+      quantity: 1,
+      description: '',
+      get amt() {
+        return Number(this.price)*Number(this.quantity);
+   }
+    })
+    this.setState({...this.state})
+  }
   createAndDownloadPdf = () => {
     axios.post('/create-pdf', this.state)
       .then(() => axios.get('/fetch-pdf', { responseType: 'blob' }))
@@ -23,7 +58,16 @@ class InvoiceForm extends Component {
         saveAs(pdfBlob, 'newPdf.pdf');
       })
   }
-
+  cancelCh=()=>{
+    return <Navigate to="/invoice" replace={true} />
+  }
+   tamount=()=>{
+    let sum=0
+    this.state.items.forEach((el)=>{
+      sum=sum+Number(el.price)*Number(el.quantity)
+    })
+    return sum
+   }
   render() {
     return (
 
@@ -57,14 +101,14 @@ class InvoiceForm extends Component {
             <Flex justify="space-betwen" alignItems="center" mb="10px">
               <Text fontWeight="500" width="40%" >Tax</Text>
               <Flex align="center" w="100%">
-              <Input type="number" placeholder='0' focusBorderColor="black" name="tax" onChange={this.handleChange}/>
+              <Input  type="number" placeholder='0' focusBorderColor="black" name="tax" onChange={this.handleChange}/>
               <Text fontSize="24px" ml="10px">%</Text>
               </Flex>
             </Flex>
             <Flex justify="space-betwen" alignItems="center" mb="10px">
               <Text fontWeight="500" width="40%" >Discount</Text>
               <Flex align="center" w="100%">
-              <Input type="number" placeholder='0' focusBorderColor="black" name="discount" onChange={this.handleChange}/>
+              <Input  type="number" placeholder='0' focusBorderColor="black" name="discount" onChange={this.handleChange}/>
               <Text fontSize="24px" ml="10px">%</Text>
               </Flex>
             </Flex>
@@ -77,7 +121,7 @@ class InvoiceForm extends Component {
          </Flex>
 
          <TableContainer>
-  <Table variant='simple'>
+  <Table variant='simple' >
    
     <Thead>
       <Tr>
@@ -88,33 +132,43 @@ class InvoiceForm extends Component {
         <Th isNumeric>Amount</Th>
       </Tr>
     </Thead>
-    <Tbody>
-      {/* <Tr>
-        <Td>inches</Td>
-        <Td>millimetres (mm)</Td>
-        <Td isNumeric>25.4</Td>
-      </Tr>
-      <Tr>
-        <Td>feet</Td>
-        <Td>centimetres (cm)</Td>
-        <Td isNumeric>30.48</Td>
-      </Tr>
-      <Tr>
-        <Td>yards</Td>
-        <Td>metres (m)</Td>
-        <Td isNumeric>0.91444</Td>
-      </Tr> */}
-    </Tbody>
-      {/* <Tfoot>
-        <Tr>
-          <Th>To convert</Th>
-          <Th>into</Th>
-          <Th isNumeric>multiply by</Th>
+    <Tbody >
+      {this.state.items.map((el)=>{
+       return <Tr key={el.id} >
+        <Td w="20%" >
+          <Flex alignItems="center" justify="space-between">
+          <Button size="sm" variant="outline" mr="5px" onClick={()=>this.handleClick(el.id)}>X</Button>
+        <Select name="service" placeholder='Select option' onChange={(e)=>this.handleItemsChange(e,el.id)}>
+          <option value='service'>Service</option>
+          <option value='product'>Product</option>
+        </Select>
+        </Flex>
+        </Td>
+        <Td  w="50%"><Input w="100%" borderColor="#dddd" type="text" name="description" onChange={(e)=>this.handleItemsChange(e,el.id)} focusBorderColor="black"/></Td>
+        <Td w="10%" ><Input size='md' defaultValue={1.00} min={1} focusBorderColor="black" name="quantity" onChange={(e)=>this.handleItemsChange(e,el.id)}/></Td>
+        <Td w="10%" >$<Input size='md' defaultValue={0.00} min={1} focusBorderColor="black" name="price" onChange={(e)=>this.handleItemsChange(e,el.id)}/></Td>
+        <Td w="10%" ><Text>${el.amt}.00</Text></Td>
         </Tr>
-      </Tfoot> */}
+      })}
+    </Tbody>
   </Table>
 </TableContainer>
-
+   <Flex justify="space-between" alignItems="center" mt="20px">
+   <Button onClick={this.handleAdd} variant="outline" size="sm">Add Items</Button>
+    <Box textAlign="right">
+    <Text>Subtotal ${this.tamount()}.00</Text>
+    <Text mt="20px" fontWeight="600">Amount Due ${this.tamount()}.00</Text>
+    </Box>
+   </Flex>
+    <Box my="30px">
+    <Text fontWeight="500">Notes (optional, displayed on invoice)</Text>
+    <Textarea />
+    </Box>
+    <Flex>
+    <Link to="/invoice/new"><Button colorScheme={"green"} mr="10px">Save Changes </Button></Link>
+    <Link to="/invoice"> <Button variant="outline">Cancel</Button></Link>
+    </Flex>
+   {/* <button onClick={this.createAndDownloadPdf}>Download PDF</button> */}
       </Box>
     );
   }
