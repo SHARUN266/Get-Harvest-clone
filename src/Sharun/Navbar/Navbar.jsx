@@ -21,6 +21,7 @@ import MyButton from "./Button";
 import { AiFillAndroid } from "react-icons/ai";
 import { BsApple } from "react-icons/bs";
 export default function Navbar() {
+  document.title = "Navbar";
   const { isOpen, onToggle } = useDisclosure();
   const [navbar, setNavbar] = useState(false);
   const ChangeNavBackground = () => {
