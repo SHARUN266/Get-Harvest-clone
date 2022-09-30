@@ -8,8 +8,9 @@ import {
     useColorModeValue,
     FormLabel,
     Spacer,
-    Link,
+    
   } from "@chakra-ui/react";
+  import { Link } from 'react-router-dom'
   import { FormControl, Input, Button } from "@chakra-ui/react";
 export default function PolicyPage() {
   return (
@@ -18,13 +19,13 @@ export default function PolicyPage() {
       Already a cutomer?{" "}
       <strong>
         {" "}
-        <Link href="">Sign in</Link>{" "}
+        <Link to="/signIn">Sign in</Link>{" "}
       </strong>{" "}
     </Text>
     <Text fontSize={"small"}>
       By creating an account, you agree to the Harvest{" "}
-      <strong>   <Link href="https://www.getharvest.com/terms-of-service">Terms of service</Link></strong> and{" "}
-    <strong>  <Link href="https://www.getharvest.com/privacy-policy">Privacy policy</Link></strong> .
+      <strong>   <a href="https://www.getharvest.com/terms-of-service">Terms of service</a></strong> and{" "}
+    <strong>  <a href="https://www.getharvest.com/privacy-policy">Privacy policy</a></strong> .
     </Text>
   </Stack>
   )

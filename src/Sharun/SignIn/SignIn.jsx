@@ -15,6 +15,7 @@ import GoogleAuthButton from "./GoogleAuthButton";
 
 export default function SimpleCard() {
   document.title = "Sign In";
+  
   return (
     <>
       <Stack p="2rem" color={"font"} alignItems={"center"}>
