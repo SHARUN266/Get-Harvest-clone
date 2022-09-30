@@ -1,14 +1,14 @@
 .parentFlex {
   display: flex;
   margin: auto;
-  width: 85%;
+  width: 80%;
   justify-content: center;
   align-items: center;
   /* gap: 10%; */
 }
 
 .childFlex {
-  width: 45%;
+  width: 100%;
   gap: auto;
 }
 
@@ -71,7 +71,7 @@ ul li > p:before {
 
 .imageFlex {
   display: flex;
-  width: 85%;
+  width: 80%;
   margin: auto;
   justify-content: space-around;
   align-items: center;

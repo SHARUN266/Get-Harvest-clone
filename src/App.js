@@ -1,13 +1,14 @@
-import { Box, Heading } from "@chakra-ui/react";
-import Dashboard from "./Components/Dashboard/Dashboard";
+import Dashboard from "./Components/Arsalan/Dashboard/Dashboard";
 import Footer from "./Sharun/Footer/Footer";
 import Navbar from "./Sharun/Navbar/Navbar";
+import Arsalan from "./Components/Arsalan/Arsalan";
 
 function App() {
   return (
     <>
       <Navbar />
-      <Dashboard />
+      {/* <Dashboard /> */}
+      <Arsalan />
       <Footer />
     </>
   );

@@ -91,13 +91,17 @@ const Dashboard = () => {
 
       <div
         className={css.parentFlex}
-        style={{ marginTop: "30px", marginBottom: "30px" }}
+        style={{
+          marginTop: "30px",
+          marginBottom: "30px",
+          justifyContent: "flex-start",
+        }}
       >
         <div style={{ width: "auto" }}>
           <span style={{ color: " #fa6652" }}>70,000+</span> companies track
           time with Harvest
         </div>
-        <div style={{ width: "70%" }}>
+        <div style={{ flex: "2" }}>
           {" "}
           <hr />
         </div>
