@@ -1,0 +1,16 @@
+
+.helpContainer{
+    /* width: 80%; */
+    margin: auto;    
+    line-height: 8vh;  
+    font-family: MuotoWeb, sans-serif;
+    padding: 5vh 10vw;
+}
+
+.helpContainer>h1{   
+    font-size: 2.8rem;
+}
+
+.helpContainer>p{
+    font-size: 1.8rem;
+}

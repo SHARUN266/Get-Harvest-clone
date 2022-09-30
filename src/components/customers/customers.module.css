@@ -1,0 +1,27 @@
+.customerContainer{
+    background-color: #fff8f1;      
+}
+.customerContainer2{
+    border-bottom: 1px solid red;
+}
+.cardContainer{
+    border-top: 1px solid red;
+    border-bottom: 1ps solid red;        
+}
+.cardContainer>div{
+    width: 80%;
+    margin: auto;
+    display: flex;
+}
+.cardContainer>h1{
+    width: 80%;
+    margin: auto;
+    line-height: 20vh;
+    font-size: 3vw;
+}
+/* @media only screen and (max-width: 800px){} */
+@media only screen and (max-width: 800px){
+    .cardContainer>div{
+        width: 90%;
+    }
+}
