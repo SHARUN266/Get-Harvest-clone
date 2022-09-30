@@ -1,8 +1,10 @@
 .parentFlex {
   display: flex;
-  width: 100%;
+  margin: auto;
+  width: 85%;
   justify-content: center;
   align-items: center;
+  /* gap: 10%; */
 }
 
 .childFlex {
@@ -11,34 +13,78 @@
 }
 
 .buttons {
-  padding: 15px;
-  border-radius: 15px;
+  padding: 15px 30px;
+  border-radius: 20px;
   border: none;
   color: white;
   font-weight: 1000;
+  font-size: 20px;
+  background-color: #1d1e1c;
+
+  position: relative;
+  top: -1px;
 }
 .buttonsFlex {
   display: flex;
-  width: 70%;
-  gap: 8%;
-  justify-content: center;
+  width: 100%;
+  gap: 2%;
+  justify-content: flex-start;
   align-items: flex-start;
 }
-.span {
+
+.big {
+  font-family: Monarch, Georgia, "Times New Roman", serif;
+  font-size: 48px !important;
+  line-height: 56px !important;
+  margin-top: 2px;
+  font-style: normal;
+  font-weight: 400;
+
+  color: #1d1e1c;
+  margin-bottom: 24px;
+}
+.ul {
+  list-style: none;
+}
+.li {
+  /* font-family: MuotoTrial; */
+  position: relative;
+  padding: 0 10px 16px 0px;
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 400;
+  color: #6d6e6d;
+}
+ul li > p:before {
+  content: "✓";
+  color: black;
+  font-size: large;
   font-weight: bold;
 }
 
+.span {
+  font-weight: bold;
+  color: black;
+  padding-left: 10px;
+}
 /* brand image */
 
 .imageFlex {
   display: flex;
-  width: 100%;
-  justify-content: space-evenly;
+  width: 85%;
+  margin: auto;
+  justify-content: space-around;
   align-items: center;
   opacity: 40%;
   gap: auto;
+  margin-bottom: 30px;
+  margin-top: 30px;
 }
 
 .brandImage {
   /* width: 5%; */
+}
+
+hr {
+  border: 1px solid #fa6652;
 }
