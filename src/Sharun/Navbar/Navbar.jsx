@@ -51,7 +51,7 @@ export default function Navbar() {
         borderBottom={1}
         justifyContent="space-between"
         borderStyle={"none"}
-        borderColor={useColorModeValue("gray.200", "gray.900")}
+        borderColor={["gray.200", "gray.900"]}
         align={"center"}
       >
         <Flex flex={{ base: 0.4 }} justify={{ base: "center", md: "start" }}>
