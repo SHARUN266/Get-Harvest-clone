@@ -2,6 +2,7 @@
   "name": "project",
   "version": "0.1.0",
   "private": true,
+  "proxy" :"http://localhost:8080/",
   "dependencies": {
     "@chakra-ui/icons": "^2.0.9",
     "@chakra-ui/react": "^2.2.8",
@@ -11,6 +12,7 @@
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.27.2",
+    "file-saver": "^2.0.5",
     "framer-motion": "^6.5.1",
     "react": "^18.2.0",
     "react-datepicker": "^4.8.0",
