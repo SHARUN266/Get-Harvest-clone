@@ -1,4 +1,4 @@
-import { Button, Image, Text } from "@chakra-ui/react";
+import { Image } from "@chakra-ui/react";
 import React from "react";
 import css from "./Dashboard.module.css";
 
@@ -6,29 +6,36 @@ const Dashboard = () => {
   return (
     <>
       <div className={css.parentFlex}>
-        {" "}
         <div className={css.childFlex}>
-          <p style={{ color: "#fa6652" }}>
+          <p
+            style={{
+              color: "#fa6652",
+              fontWeight: "bold",
+              margin: "20px 20px 20px 0px",
+            }}
+          >
             SEE WHY 70,000+ COMPANIES TRACK TIME WITH HARVEST
           </p>
-          <h1>Finally, time tracking your team actually wants to use</h1>
-          <ul>
-            <li>
+          <h1 className={css.big}>
+            Finally, time tracking your team actually wants to use
+          </h1>
+          <ul className={css.ul}>
+            <li className={css.li}>
               <p>
-                <span className={css.span}> Time Tracking. </span>
+                <span className={css.span}>Time Tracking. </span>
                 Easy & intuitive time tracking that captures all your time
                 without changing the way you work.
               </p>
             </li>
 
-            <li>
+            <li className={css.li}>
               <p>
-                <span className={css.span}>Reports & Analysis. </span>
+                <span className={css.span}> Reports & Analysis. </span>
                 Instantly create reports across projects. Budgets, time, team
                 capacity, cost breakdowns, and more.
               </p>
             </li>
-            <li>
+            <li className={css.li}>
               <p>
                 <span className={css.span}>Invoicing & Payments. </span>
                 Turn tracked time into invoices. Accept online payments. Sync
@@ -38,20 +45,39 @@ const Dashboard = () => {
           </ul>
           <div className={css.buttonsFlex}>
             <div>
-              <Button className={css.buttons} backgroundColor="#fa5d00">
+              <button
+                className={css.buttons}
+                style={{
+                  backgroundColor: "#fa5d00",
+                }}
+              >
                 Try Harvest free
-              </Button>
-              <div>
+              </button>
+              <div
+                className={css.li}
+                style={{
+                  padding: "0px",
+                  display: "flex",
+                  justifyContent: "center",
+                  margin: "10px",
+                }}
+              >
                 <p>Free 30-day trial.</p>
               </div>
-              <div>
+              <div
+                className={css.li}
+                style={{
+                  padding: "0px",
+                  display: "flex",
+                  justifyContent: "center",
+                  margin: "10px",
+                }}
+              >
                 <p>No credit card required.</p>
               </div>
             </div>
             <div>
-              <Button className={css.buttons} backgroundColor="#1d1e1c">
-                See Pricing
-              </Button>
+              <button className={css.buttons}>See Pricing</button>
             </div>
           </div>
         </div>
@@ -62,9 +88,25 @@ const Dashboard = () => {
           />
         </div>
       </div>
-      <p>
-        <span>70,000+</span> companies track time with Harvest
-      </p>
+
+      <div
+        className={css.parentFlex}
+        style={{
+          marginTop: "30px",
+          marginBottom: "30px",
+          justifyContent: "flex-start",
+        }}
+      >
+        <div style={{ width: "auto" }}>
+          <span style={{ color: " #fa6652" }}>70,000+</span> companies track
+          time with Harvest
+        </div>
+        <div style={{ flex: "2" }}>
+          {" "}
+          <hr />
+        </div>
+      </div>
+
       <div className={css.imageFlex}>
         <Image
           className={css.brandImage}
@@ -95,6 +137,7 @@ const Dashboard = () => {
           src="https://www.getharvest.com/hubfs/raw_assets/public/harvest-theme/images/customer-logos/featured-yale.svg?noresize"
         />
       </div>
+      <hr />
     </>
   );
 };
