@@ -1,0 +1,60 @@
+.form{
+    padding: 10px;
+    width: 95%;
+    margin: auto;
+    text-align: left;
+}
+.form input{
+    border: 1px solid #bbb;
+}
+.form label{
+    font-size: 16px;
+    font-weight: 500;
+    width: 200px;
+}
+.projectCode{
+    display: block;
+}
+.projectCode>input{
+    display: block;
+}
+.projectCode>p{
+    font-size: 14px;
+    color:grey;
+}
+.dates input{
+width: 90px;
+}
+.task{
+    border: 1px solid grey;
+    border-left: 0;
+    border-right: 0;
+    background-color: #eee;
+    font-size: 22px;
+    font-weight: 500;
+    padding: 10px;
+}
+.delBut{
+    width: 25px;
+    height: 25px;
+    border: 1px solid grey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.taskhead{
+   font-size: 16px;
+   font-weight: 500;
+}
+.taskItem{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid grey;
+    border-left: 0;
+    border-right: 0;
+    padding: 10px;
+    background-color: #fff;  
+}
