@@ -1,10 +1,9 @@
 import Dashboard from "./Components/Arsalan/Dashboard/Dashboard";
 import Footer from "./Sharun/Footer/Footer";
 import Navbar from "./Sharun/Navbar/Navbar";
-import Arsalan from "./Components/Arsalan/Home";
 
-import { Customers } from "./Components/customers/Customers";
-import { Features } from "./Components/features/Features";
+
+
 
 import { useContext, useEffect } from "react";
 import { useState } from "react";
@@ -16,6 +15,7 @@ import SignUp from "./Sharun/SignUp/SignUp";
 import SimpleCard from "./Sharun/SignIn/SignIn";
 import { ProjectData } from "./Context/ProjectDataContext";
 import PrivateRoute from "./Sharun/Components/PrivateRoute";
+import Home from "./Components/Arsalan/Home";
 
 
 
@@ -50,8 +50,8 @@ function App() {
           element={
             <>
               <PrivateRoute>
-             <Navbar2 imageUrl={userImage} flag={flag} name={name} />
-                <Arsalan />
+             <Navbar imageUrl={userImage} flag={flag} name={name} />
+              <Home/>
               </PrivateRoute>
             </>
           }
