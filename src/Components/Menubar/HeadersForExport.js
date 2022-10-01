@@ -1,0 +1,33 @@
+export const headers=[
+    {
+      label:"Client",key:"client"
+    },
+    {
+      label:"Project",key:"projectName"
+    },
+    {
+      label:"Code",key:"projectCode"
+    },
+    {
+      label:"Start_Date",key:"s_Date"
+    },
+    {
+      label:"End_Date",key:"e_Date"
+    },
+    {
+      label:"Notes",key:"notes"
+    },
+    {
+      label:"Permission",key:"permission"
+    },
+    {
+      label:"Pinned",key:"isPinned"
+    },
+    {
+      label:"Duplicated",key:"isDuplicated"
+    },
+    {
+      label:"Archived",key:"isArchieved"
+    },
+    
+  ]

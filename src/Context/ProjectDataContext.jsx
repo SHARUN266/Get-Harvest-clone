@@ -4,7 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { deleteData, filterClient, getData, searchBy_Client_Project, updateData } from '../projects.api';
 export const ProjectData=createContext();
 const ProjectDataContext = ({children}) => {
-    const [projects,setProjects]=useState([]);
+  const [projects,setProjects]=useState([]);
+  const [projectArr,setProjectArr]=useState([]);
   const [client,setClient]=useState([]);
   const [clearFilter,setClearFilter]=useState(false)
   const navigate=useNavigate();
@@ -13,6 +14,7 @@ const ProjectDataContext = ({children}) => {
   let res=await getData();
   setProjects(res.data);
   setClient(res.data.map(el=>el.client));
+  setProjectArr(res.data.map(el=>el.projectName));
 }
 const updateHandler=async (id,newStatus)=>{
  let res= await updateData(id,newStatus);
@@ -34,7 +36,7 @@ const searchHandler=async (q)=>{
   setProjects(res.data);
 }   
   return (
-    <ProjectData.Provider value={{projects,client,clearFilter,getProjects,updateHandler,deleteHandler,filterByClient,searchHandler}}>
+    <ProjectData.Provider value={{projectArr,projects,client,clearFilter,getProjects,updateHandler,deleteHandler,filterByClient,searchHandler}}>
      {children}
     </ProjectData.Provider>
   )

@@ -5,8 +5,15 @@ import styles from "./Menubar.module.css";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { ProjectData } from "../../Context/ProjectDataContext";
+import {CSVLink} from 'react-csv';
+import { headers } from "./HeadersForExport";
 const Menubar = ({project=false,projectDetail=false}) => {
-  const {searchHandler}=useContext(ProjectData)
+  const {projects,searchHandler}=useContext(ProjectData)
+  const csvLink={
+    filename:'projects.csv',
+    headers:headers,
+    data:projects
+  }
   return (
     <Box className={styles.menubar}>
       <Flex direction={["column", "row", "row"]} gap='15px' justify="space-between" p='0 20px'>
@@ -15,12 +22,15 @@ const Menubar = ({project=false,projectDetail=false}) => {
            <Link to='/projects/new-projects'><Button h="36px" variant className={styles.createBut}>
               <span>+</span>New Project
             </Button></Link>
+
             <Button h="36px" variant className={styles.importBut}>
               Import
             </Button>
+           <CSVLink {...csvLink}>
             <Button h="36px" variant className={styles.importBut}>
               Export
             </Button>
+           </CSVLink>
           </Stack>
         </Box>
         {/* Project Detail Page  */}
