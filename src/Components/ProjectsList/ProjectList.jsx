@@ -10,7 +10,7 @@ import { useEffect } from 'react';
 
 
 const ProjectList = () => {
-const {projects,client,clearFilter,getProjects,updateHandler,deleteHandler,filterByClient}=useContext(ProjectData)
+const {projectArr,projects,client,clearFilter,getProjects,updateHandler,deleteHandler,filterByClient}=useContext(ProjectData)
 useEffect(()=>{
 getProjects();
 },[])
@@ -29,8 +29,8 @@ getProjects();
                 <ProjectFilter items={client}
                Actions='Filter by client' filterBy={filterByClient} />
               <ProjectFilter 
-              item={projects} 
-              Actions='Filter by manager'/>
+              items={projectArr} 
+              Actions='Filter by projects' filterBy={filterByClient}/>
             </Flex>
           </Box>
         </Flex>
