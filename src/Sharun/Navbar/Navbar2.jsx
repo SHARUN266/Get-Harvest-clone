@@ -21,8 +21,7 @@ import { BsApple } from "react-icons/bs";
 
 import SignInAvatar from "./SignInAvatar";
 
-export default function Navbar({ imageUrl, name, flag }) {
- 
+export default function Navbar2({ imageUrl, name, flag }) {
   const { isOpen, onToggle } = useDisclosure();
   const [navbar, setNavbar] = useState(false);
   const ChangeNavBackground = () => {
@@ -36,7 +35,7 @@ export default function Navbar({ imageUrl, name, flag }) {
 
   return (
     <Box
-      bg={{ base: "mdBgFrNav", md: "mdBgFrNav", lg: "#fff" }}
+      bg={{ base: "mdBgFrNav", md: "mdBgFrNav", lg: "font" }}
       zIndex={50}
       shadow={navbar ? "md" : "none"}
       position="sticky"
@@ -46,7 +45,7 @@ export default function Navbar({ imageUrl, name, flag }) {
         w={["100%", "100%", "80%"]}
         m="auto"
         color={"#111"}
-        minH={"90px"}
+        minH={"50px"}
         py={{ base: 2 }}
         px={{ base: 1 }}
         borderBottom={1}
@@ -56,14 +55,6 @@ export default function Navbar({ imageUrl, name, flag }) {
         align={"center"}
       >
         <Flex flex={{ base: 0.4 }} justify={{ base: "center", md: "start" }}>
-          <Box
-            color={["#f2f2f2", "#f2f2f2", "font"]}
-            pr={["0rem", "0rem", "2rem"]}
-            borderRight={{ base: "none", md: "none", lg: "1px solid #ebebeb" }}
-          >
-            <Svg />
-          </Box>
-
           <Flex display={{ base: "none", md: "flex" }} ml={2}>
             <DesktopNav />
           </Flex>
@@ -75,40 +66,6 @@ export default function Navbar({ imageUrl, name, flag }) {
           direction={"row"}
           spacing={6}
         >
-          <Link to="/signIn">
-            <Button
-              variant={"ghost"}
-              display={{ base: "none", md: "inline-flex" }}
-              fontSize={"1.15vw"}
-              fontWeight={550}
-              p="2.9vh 1.5vw"
-              color={"#111"}
-              href={"#"}
-              _hover={{
-                color: "font",
-              }}
-            >
-              Sign In
-            </Button>
-          </Link>
-          <Link to="signUp">
-            <Button
-              display={{ base: "none", md: "inline-flex" }}
-              fontSize={"1.15vw"}
-              fontWeight={550}
-              p="2.9vh 1.5vw"
-              shadow={"md"}
-              borderRadius={"16px"}
-              color={"#fff"}
-              bg={"bg"}
-              href={"#"}
-              _hover={{
-                bg: "hover",
-              }}
-            >
-              Try Harvest Free
-            </Button>
-          </Link>
           <SignInAvatar name={name} imageUrl={imageUrl} flag={flag} />
         </Stack>
         <Flex
@@ -147,9 +104,9 @@ const DesktopNav = () => {
           fontSize={"1.2vw"}
           fontWeight={400}
           _hover={{
-            color: "font",
+            color: "gray.300",
           }}
-          color={"#111"}
+          color={"#f2f2f2"}
           key={navItem.label}
         >
           <Link p={4} to={navItem.href}>
@@ -249,20 +206,16 @@ const MobileNavItem = ({ label, children, href }) => {
 
 const NAV_ITEMS = [
   {
-    label: "WhyHarvest?",
+    label: "Time",
     href: "/whyHarvest",
   },
 
   {
-    label: "Features",
+    label: "Expenses",
     href: "#",
   },
   {
-    label: "Customers",
-    href: "#",
-  },
-  {
-    label: "Pricing",
+    label: "Invoices",
     href: "#",
   },
 ];

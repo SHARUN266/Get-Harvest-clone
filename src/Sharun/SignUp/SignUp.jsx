@@ -19,6 +19,7 @@ import FormSignUp from "./FormSignUp";
 import PolicyPage from "./PolicyPage";
 
 export default function SignUp() {
+  document.title="Sign Up with us!"
   return (
     <Box minH={"60vh"} bgImage={bgImage} bgRepeat="no-repeat" bgSize={"cover"}>
       <Flex

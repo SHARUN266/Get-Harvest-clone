@@ -5,6 +5,7 @@ import {
     Avatar,
     Center,
     Menu,
+    Text,
     MenuButton,
     MenuDivider,
     MenuItem,
@@ -16,6 +17,7 @@ import { auth } from '../BackEnd/Firebase';
 import LogoutButton from '../BackEnd/GoogleLogOut';
 import { useAuth0 } from "@auth0/auth0-react";
 export default function SignInAvatar({imageUrl,flag,name}) {
+
 
   const { user, isAuthenticated, isLoading } = useAuth0();
     const handleLogOut=()=>{
@@ -38,6 +40,7 @@ export default function SignInAvatar({imageUrl,flag,name}) {
         >
           <Avatar name={name} src={imageUrl} />
         </MenuButton>
+       
         <MenuList alignItems={"center"}>
           <br />
           <Center>
@@ -75,7 +78,7 @@ export default function SignInAvatar({imageUrl,flag,name}) {
         </Center>
         <br />
         <Center>
-          <p>{name}</p>
+          <p>{user.name}</p>
         </Center>
         <br />
         <MenuDivider />

@@ -2,9 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
-
 import { ChakraProvider } from "@chakra-ui/react";
-
+import ProjectDataContext from "./Context/ProjectDataContext";
 import { extendTheme } from "@chakra-ui/react";
 import { BrowserRouter } from "react-router-dom";
 import { Auth0Provider } from "@auth0/auth0-react";
@@ -18,19 +17,19 @@ const theme = extendTheme({
   },
 });
 root.render(
-  
-    <ChakraProvider theme={theme}>
-      <BrowserRouter>
-        <Auth0Provider
-          domain="dev-xzublob3.us.auth0.com"
-          clientId="d5SiIZXmj0YYRdbKei0GyZtpEcCNOUWh"
-          redirectUri={window.location.origin}
-        >
+  <ChakraProvider theme={theme}>
+    <BrowserRouter>
+      <Auth0Provider
+        domain="dev-xzublob3.us.auth0.com"
+        clientId="d5SiIZXmj0YYRdbKei0GyZtpEcCNOUWh"
+        redirectUri={window.location.origin}
+      >
+        <ProjectDataContext>
           <App />
-        </Auth0Provider>
-      </BrowserRouter>
-    </ChakraProvider>
-
+        </ProjectDataContext>
+      </Auth0Provider>
+    </BrowserRouter>
+  </ChakraProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

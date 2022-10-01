@@ -1,0 +1,16 @@
+
+@media  (max-width: 850px){
+    .box{
+        width:100%;
+        margin: 0;
+        margin-top: 2rem;
+       
+    }
+    .img{
+        width:1rem;
+    }
+    .logobox{
+        width:100%;
+        margin-left: -4rem;
+    }
+}

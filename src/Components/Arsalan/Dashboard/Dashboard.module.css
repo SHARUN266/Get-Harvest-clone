@@ -91,3 +91,11 @@ ul li > p:before {
 hr {
   border: 1px solid #fa6652;
 }
+
+/*  */
+
+@media only screen and (max-width: 844px) {
+  .parentFlex {
+    flex-direction: column;
+  }
+}

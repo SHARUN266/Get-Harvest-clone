@@ -1,8 +1,9 @@
-import React from 'react'
-import { Route, Routes } from 'react-router-dom'
-import Arsalan from '../../Components/Arsalan/Arsalan'
-import SimpleCard from '../SignIn/SignIn'
-import SignUp from '../SignUp/SignUp'
+import React from "react";
+import { Route, Routes } from "react-router-dom";
+import Home from "../../Components/Arsalan/Home";
+import WhyHarvest from "../../Components/Arsalan/WhyHarvest";
+import SimpleCard from "../SignIn/SignIn";
+import SignUp from "../SignUp/SignUp";
 //Client ID
 //542877942694-s7ilbdsqcgm51dbf2tlh42fustku77v1.apps.googleusercontent.com
 //Secret
@@ -10,13 +11,14 @@ import SignUp from '../SignUp/SignUp'
 function AllRoutes() {
   return (
     <div>
-        <Routes>
-            <Route path="/" element={<Arsalan/>}/>
-            <Route path="signUp" element={<SignUp/>}/>
-            <Route path="signIn" element={<SimpleCard/>}/>
-        </Routes>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="whyHarvest" element={<WhyHarvest />} />
+        <Route path="signUp" element={<SignUp />} />
+        <Route path="signIn" element={<SimpleCard />} />
+      </Routes>
     </div>
-  )
+  );
 }
 
-export default AllRoutes
+export default AllRoutes;
