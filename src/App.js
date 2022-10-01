@@ -6,6 +6,12 @@ import Arsalan from "./Components/Arsalan/Arsalan";
 import { Customers } from "./Components/customers/Customers";
 import { Features } from "./Components/features/Features";
 
+import { useEffect } from "react";
+import { useState } from "react";
+import { auth } from "./Sharun/BackEnd/Firebase";
+import AllRoutes from "./Sharun/Routers/AllRoutes";
+
+
 
 
 
@@ -40,12 +46,6 @@ function App() {
    <AllRoutes/>
      <Footer/>
 
-      <Navbar />
-      {/* <Dashboard /> */}
-      {/* <Arsalan /> */}
-     
-      
-      <Footer />
 
     </>
   );

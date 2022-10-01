@@ -1,10 +1,11 @@
 import { Box } from "@chakra-ui/react";
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Svg() {
   return (
     <Box >
-      <a href="/">
+      <Link to="/">
         <svg
           width="159"
           height="32"
@@ -20,7 +21,7 @@ export default function Svg() {
             ></path>
           </g>
         </svg>
-      </a>
+      </Link>
     </Box>
   );
 }
