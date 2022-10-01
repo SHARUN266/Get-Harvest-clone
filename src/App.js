@@ -9,13 +9,14 @@ import { Features } from "./Components/features/Features";
 
 
 
+
 function App() {
   return (
     <>
       <Navbar />
       {/* <Dashboard /> */}
       {/* <Arsalan /> */}
-     
+      
       
       <Footer />
     </>
