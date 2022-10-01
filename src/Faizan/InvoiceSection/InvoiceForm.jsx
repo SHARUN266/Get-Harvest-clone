@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { saveAs } from 'file-saver';
+
 import { Box, Button, Flex, Heading, Input, Select, Table, TableContainer, Tbody, Td, Text, Textarea, Th, Thead, Tr } from '@chakra-ui/react';
 import { Link, Navigate } from 'react-router-dom';
 
 class InvoiceForm extends Component {
-   
+  
   state = {
     client: 'client',
     invoiceId: 0,
@@ -24,6 +24,7 @@ class InvoiceForm extends Component {
       
     ]
   }
+  flag=false
   handleChange = ({ target: { value, name }}) => this.setState({ [name]: value })
   handleItemsChange=({ target: { value, name }},id)=>{
     this.state.items[id-1][name]=value
@@ -49,21 +50,29 @@ class InvoiceForm extends Component {
     })
     this.setState({...this.state})
   }
-  createAndDownloadPdf = () => {
-    axios.post('/invoice/create-pdf', this.state)
-      .then(() => axios.get('/fetch-pdf', { responseType: 'blob' }))
-      .then((res) => {
-        const pdfBlob = new Blob([res.data], { type: 'application/pdf' });
+  // createAndDownloadPdf = () => {
+  //   axios.post('/invoice/create-pdf', this.state)
+  //     .then(() => axios.get('/fetch-pdf', { responseType: 'blob' }))
+  //     .then((res) => {
+  //       const pdfBlob = new Blob([res.data], { type: 'application/pdf' });
 
-        saveAs(pdfBlob, 'newPdf.pdf');
-      })
-  }
-  test=()=>{
-    axios.get('/invoice')
-      .then((res)=>{
-        console.log(res)
-      })
-      
+  //       saveAs(pdfBlob, 'newPdf.pdf');
+        
+  //     })
+  // }
+
+  handleSave=()=>{
+   if(this.state.client!=="client" && this.state.client!==""){
+    axios.post("/invoice",this.state)
+    .then((res)=>{
+     this.flag=true
+     this.setState({...this.state})
+    }).catch((err)=>{
+      alert("Please fill the details correctly")
+    })
+   }else{
+    alert("Please fill the details correctly")
+   }
   }
   cancelCh=()=>{
     return <Navigate to="/invoice" replace={true} />
@@ -76,6 +85,9 @@ class InvoiceForm extends Component {
     return sum
    }
   render() {
+    if(this.state.client!=="client" && this.state.client!=="" && this.flag===true){
+      return <Navigate to="/invoice/preview" replace={true} />
+    }
     return (
 
       <Box w="90%" m="auto">
@@ -85,7 +97,7 @@ class InvoiceForm extends Component {
           <Box w="50%" pr="15%">
             <Flex justify="space-betwen" alignItems="center" mb="10px" >
               <Text fontWeight="500" width="40%">Invoice ID</Text>
-              <Input type="number" focusBorderColor="black" name="invoiceId" onChange={this.handleChange}/>
+              <Input type="number" focusBorderColor="black" isRequired name="invoiceId" onChange={this.handleChange}/>
             </Flex>
             <Flex justify="space-betwen" alignItems="center" mb="10px">
               <Text fontWeight="500" width="40%" >PO Number</Text>
@@ -103,7 +115,7 @@ class InvoiceForm extends Component {
           <Box w="50%" pr="15%">
           <Flex justify="space-betwen" alignItems="center" mb="10px" >
               <Text fontWeight="500" width="40%">Invoice For</Text>
-              <Input type="text" focusBorderColor="black" name="client" onChange={this.handleChange}/>
+              <Input type="text" focusBorderColor="black" name="client" isRequired onChange={this.handleChange}/>
             </Flex>
             <Flex justify="space-betwen" alignItems="center" mb="10px">
               <Text fontWeight="500" width="40%" >Tax</Text>
@@ -172,11 +184,10 @@ class InvoiceForm extends Component {
     <Textarea />
     </Box>
     <Flex mb="50px">
-    <Link to="/invoice/preview"><Button colorScheme={"green"} mr="10px">Save Changes </Button></Link>
+   <Button onClick={this.handleSave} colorScheme={"green"} mr="10px">Save Changes </Button>
     <Link to="/invoice"> <Button variant="outline">Cancel</Button></Link>
     </Flex>
-   <button onClick={this.createAndDownloadPdf}>Download PDF</button>
-   <button onClick={this.test}>Download PDF</button>
+   
       </Box>
     );
   }

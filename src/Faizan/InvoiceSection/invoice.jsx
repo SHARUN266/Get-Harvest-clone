@@ -1,8 +1,10 @@
 import { Box, Button, Heading, Image, Text } from '@chakra-ui/react';
+// import axios from 'axios';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
 function Invoice(props) {
+  
     return (
         <Box w="80%" m="auto" mt="30px">
             <Heading mb="10px" fontWeight="500" >Invoices</Heading>
