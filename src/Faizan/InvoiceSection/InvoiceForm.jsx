@@ -63,12 +63,12 @@ class InvoiceForm extends Component {
 
   handleSave=()=>{
    if(this.state.client!=="client" && this.state.client!==""){
-    axios.post("/invoice",this.state)
+    axios.post("https://timetracker201rct.herokuapp.com/invoice",this.state)
     .then((res)=>{
      this.flag=true
      this.setState({...this.state})
     }).catch((err)=>{
-      alert("Please fill the details correctly")
+      alert("Please fill the form correctly")
     })
    }else{
     alert("Please fill the details correctly")

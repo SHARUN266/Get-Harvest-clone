@@ -14,6 +14,7 @@ import {
 import axios from 'axios';
 
 import React, { useEffect, useState } from 'react';
+import { useRef } from 'react';
 function Time() {
     const days=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
     const months=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sept","Oct","Nov","Dec"]
@@ -38,6 +39,7 @@ function Time() {
     const [friData,setFriData] = useState([])
     const [satData, setSatData] = useState([])
     const [project, setProject] = useState([])
+    const Ref=useRef(null)
     const handleTabsChange = (index) => {
         setTabIndex(index)
       }
@@ -46,7 +48,7 @@ function Time() {
      }
      const handleSubmit=()=>{
         setLoading(true)
-        axios.post("/time",state)
+        axios.post("https://timetracker201rct.herokuapp.com/time",state)
          .then(()=>{
             getTimeList()
             onClose()
@@ -60,7 +62,7 @@ function Time() {
     const handleDelete=()=>{
         setLoading(true)
         const id=modalData
-        axios.delete(`/time/${id}`).then(()=>{
+        axios.delete(`https://timetracker201rct.herokuapp.com/time/${id}`).then(()=>{
            getTimeList()
            eonClose()
         })
@@ -77,7 +79,7 @@ function Time() {
      }
      const getTimeList=()=>{
         setLoading(true)
-        axios.get("/time").then((res)=>{
+        axios.get("https://timetracker201rct.herokuapp.com/time").then((res)=>{
             const sundayData=res.data.filter((el)=>{
                 return el.day===0
             })
@@ -112,7 +114,7 @@ function Time() {
      const handleUpate=()=>{
         setLoading(true)
         const id=modalData
-        axios.patch(`/time/${id}`,state).then(()=>{
+        axios.patch(`https://timetracker201rct.herokuapp.com/time/${id}`,state).then(()=>{
            getTimeList()
            onClose()
         })
@@ -158,32 +160,28 @@ function Time() {
     },[])
     
    const handleStart=(e,id,time)=>{
-        // if(toggle===0 || toggle===id){
-        //    var varCounter = time;
-        //    var inter =setInterval(()=>{
-        //     if(toggle===0){
-        //         clearInterval(inter)
-        //     }else{
-        //         console.log(varCounter++)
-        //     }
-        //    },1000);
+        //   if(ref.current===null){
+        //     ref.current=setInterval(()=>{
+
+        //     },1000)
+        //   }
 
             if(e.target.innerText==="Start"){
                 e.target.style.variant="solid"
                 e.target.style.backgroundColor="black"
                 e.target.style.color="White"
                 e.target.innerHTML=`<Image w="100px" mr="10px" src="https://thumbs.gfycat.com/BossyImmenseDuck-size_restricted.gif"/>Stop`
-            //    setToggle(id)
+               
                 
                 }else{
                     e.target.style.variant="outline"
                     e.target.style.backgroundColor="White"
                     e.target.style.color="Black"
                     e.target.innerHTML=`Start`
-                    //  setToggle(0)
+                
                 }
-        
-    
+
+                return 
    }
    if(loading===true){
     return <Box w="90%" display="flex" justifyContent="center" m="auto" pt="100px">

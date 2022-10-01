@@ -14,7 +14,7 @@ function InvoicePreview(props) {
     
     const getInvoice = () => {
         setLoading(true)
-        axios.get('/invoice')
+        axios.get('https://timetracker201rct.herokuapp.com/invoice')
             .then((res)=>{
                 
                 let total=0
@@ -28,8 +28,8 @@ function InvoicePreview(props) {
         }
      
     const createAndDownloadPdf = () => {
-    axios.post('/invoice/create-pdf',state)
-      .then(() => axios.get('/fetch-pdf', { responseType: 'blob' }))
+    axios.post('https://timetracker201rct.herokuapp.com/invoice/create-pdf',state)
+      .then(() => axios.get('https://timetracker201rct.herokuapp.com/fetch-pdf', { responseType: 'blob' }))
       .then((res) => {
         const pdfBlob = new Blob([res.data], { type: 'application/pdf' });
 
