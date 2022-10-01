@@ -250,19 +250,19 @@ const MobileNavItem = ({ label, children, href }) => {
 const NAV_ITEMS = [
   {
     label: "WhyHarvest?",
-    href: "/whyHarvest",
+    href: "/whyharvest",
   },
 
   {
     label: "Features",
-    href: "#",
+    href: "/feature",
   },
   {
     label: "Customers",
-    href: "#",
+    href: "/customers",
   },
   {
     label: "Pricing",
-    href: "#",
+    href: "/pricing",
   },
 ];

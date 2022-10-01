@@ -1,6 +1,6 @@
 import { Box, Flex, Stack, Text } from '@chakra-ui/react'
 import Menubar from '../Components/Menubar/Menubar'
-import ProjectsAction from '../Components/ProjectList/ProjectsAction'
+import ProjectsAction from '../Components/ProjectsList/ProjectsAction'
 import styles from '../Components/ProjectDetail/ProjectDetail.module.css';
 import ProjectDetailTable from '../Components/ProjectDetail/ProjectDetailTable';
 import React, { useContext, useState } from "react";

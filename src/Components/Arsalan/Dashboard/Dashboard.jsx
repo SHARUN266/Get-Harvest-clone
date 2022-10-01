@@ -1,5 +1,6 @@
 import { Image } from "@chakra-ui/react";
 import React from "react";
+import { Link } from "react-router-dom";
 import css from "./Dashboard.module.css";
 
 const Dashboard = () => {
@@ -45,6 +46,7 @@ const Dashboard = () => {
           </ul>
           <div className={css.buttonsFlex}>
             <div>
+              <Link to="/signUp">
               <button
                 className={css.buttons}
                 style={{
@@ -53,6 +55,7 @@ const Dashboard = () => {
               >
                 Try Harvest free
               </button>
+              </Link>
               <div
                 className={css.li}
                 style={{

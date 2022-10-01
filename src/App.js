@@ -16,6 +16,17 @@ import SimpleCard from "./Sharun/SignIn/SignIn";
 import { ProjectData } from "./Context/ProjectDataContext";
 import PrivateRoute from "./Sharun/Components/PrivateRoute";
 import Home from "./Components/Arsalan/Home";
+import WhyHarvest from "./Components/Arsalan/WhyHarvest";
+import Pricing from "./Components/pricing/Pricing";
+import  {Features}  from "./Components/features/feature.jsx";
+import { Customers } from "./Components/customers/Customers";
+import Invoice from "./Faizan/InvoiceSection/invoice";
+import Time from "./Faizan/TimeSection/Time";
+import InvoiceForm from "./Faizan/InvoiceSection/InvoiceForm";
+import InvoicePreview from "./Faizan/InvoiceSection/InvoicePreview";
+import Projects from "./Pages/Projects";
+import NewProject from "./Pages/NewProject";
+import ProjectDetail from "./Pages/ProjectDetail";
 
 
 
@@ -45,17 +56,45 @@ function App() {
     <>
 
       <Routes>
+        
         <Route
           path="/"
           element={
             <>
-              <PrivateRoute>
+              
              <Navbar imageUrl={userImage} flag={flag} name={name} />
               <Home/>
-              </PrivateRoute>
+            
             </>
           }
         />
+        <Route path="/whyharvest" element={
+        <>
+        <Navbar imageUrl={userImage} flag={flag} name={name} />
+        <WhyHarvest/>
+        </>
+        }/>
+        <Route path="/pricing" element={
+        <>
+        <Navbar imageUrl={userImage} flag={flag} name={name} />
+        <Pricing/>
+        </>}/>
+        <Route path="/feature" element={<>
+        <Navbar imageUrl={userImage} flag={flag} name={name} />
+        <Features/>
+        </>}/>
+        <Route path="/customers" element={<>
+        <Navbar imageUrl={userImage} flag={flag} name={name} />
+        <Customers/>
+        </>}/>
+        
+        <Route path="/invoice" element={<Invoice/>}/>
+        <Route path="/invoice/new" element={<InvoiceForm/>}/>
+        <Route path="/invoice/preview" element={<InvoicePreview/>}/>
+        <Route path="/time" element={<Time/>}/>
+        <Route path="/projects" element={<Projects/>}/>
+        <Route path="/projects/new-projects" element={<NewProject/>}/>
+        <Route path="/projects/:id" element={<ProjectDetail/>}/>
         <Route path="signUp" element={<SignUp />} />
         <Route path="signIn" element={<SimpleCard />} />
       </Routes>

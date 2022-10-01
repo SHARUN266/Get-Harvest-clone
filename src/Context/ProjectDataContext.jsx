@@ -51,7 +51,7 @@ const ChangeFlagStateToFalse=()=>{
 }
   return (
 
-    <ProjectData.Provider value={{flag,ChangeFlagStateToTrue,ChangeFlagStateToFalse,projects,client,clearFilter,getProjects,updateHandler,deleteHandler,filterByClient,searchHandler}}>
+    <ProjectData.Provider value={{projectArr,flag,ChangeFlagStateToTrue,ChangeFlagStateToFalse,projects,client,clearFilter,getProjects,updateHandler,deleteHandler,filterByClient,searchHandler}}>
 
      {children}
     </ProjectData.Provider>
