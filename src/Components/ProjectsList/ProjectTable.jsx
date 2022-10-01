@@ -38,7 +38,7 @@ const ProjectTable = ({projects,updateHandler,deleteHandler}) => {
         <Td ></Td>
       </Tr>
       <Tr > 
-     <Td rowSpan='2' onClick={()=>navigateHandler(p._id)}>{p.isPinned && <Img w='20px' src='https://cdn-icons-png.flaticon.com/512/3091/3091197.png' alt='pin' />}[{p.projectCode}]{p.projectName}</Td>
+     <Td rowSpan='2' _hover={{cursor:"pointer"}} onClick={()=>navigateHandler(p._id)}>{p.isPinned && <Img w='20px' src='https://cdn-icons-png.flaticon.com/512/3091/3091197.png' alt='pin' />}[{p.projectCode}]{p.projectName}</Td>
         <Td></Td>
         <Td></Td>
         <Td >0.00</Td>
