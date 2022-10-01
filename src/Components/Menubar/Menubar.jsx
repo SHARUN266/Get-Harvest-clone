@@ -39,7 +39,7 @@ const Menubar = ({project=false,projectDetail=false}) => {
               <span></span>Back to Projects
             </Button></Link>
         </Box>
-        <Box>
+        <Box display={project?'block':'none'}>
           <Searchbar searchHandler={searchHandler} />
         </Box>
       </Flex>
