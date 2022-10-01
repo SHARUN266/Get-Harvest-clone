@@ -6,6 +6,7 @@ import Learning from "./Learning/Learning";
 import Tracking from "./Tracking/Tracking";
 
 const Arsalan = () => {
+  document.title="Harvest Home"
   return (
     <>
       <Dashboard />
