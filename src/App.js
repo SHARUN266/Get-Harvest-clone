@@ -16,8 +16,6 @@ import AllRoutes from "./Sharun/Routers/AllRoutes";
 
 
 
-
-
 function App() {
   const [userImage,setUserimage]=useState("")
   const [name,setName]=useState("")
@@ -44,11 +42,9 @@ function App() {
   return (
     <>
 
-
     <Navbar imageUrl={userImage} flag={flag} name={name} />
    <AllRoutes/>
      <Footer/>
-
 
 
     </>

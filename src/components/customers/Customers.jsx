@@ -10,8 +10,6 @@ import { Start } from "./Start";
 
 
 export const Customers = () => {
-
-  // document.title = "Customer";
    
   return (
     <div className={styles.customerContainer}>      
