@@ -1,7 +1,12 @@
 import React from "react";
+import Tracking from "./Tracking/Tracking";
 
 const WhyHarvest = () => {
-  return <div>WhyHarvest</div>;
+  return (
+    <>
+      <Tracking />
+    </>
+  );
 };
 
 export default WhyHarvest;
