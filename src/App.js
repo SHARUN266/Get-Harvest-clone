@@ -1,7 +1,7 @@
 import Dashboard from "./Components/Arsalan/Dashboard/Dashboard";
 import Footer from "./Sharun/Footer/Footer";
 import Navbar from "./Sharun/Navbar/Navbar";
-import Arsalan from "./Components/Arsalan/Arsalan";
+import Arsalan from "./Components/Arsalan/Home";
 
 import { Customers } from "./Components/customers/Customers";
 import { Features } from "./Components/features/Features";
@@ -16,6 +16,8 @@ import SignUp from "./Sharun/SignUp/SignUp";
 import SimpleCard from "./Sharun/SignIn/SignIn";
 import { ProjectData } from "./Context/ProjectDataContext";
 import PrivateRoute from "./Sharun/Components/PrivateRoute";
+
+
 
 function App() {
   const [userImage, setUserimage] = useState("");
@@ -41,6 +43,7 @@ function App() {
 
   return (
     <>
+
       <Routes>
         <Route
           path="/"
@@ -57,6 +60,7 @@ function App() {
         <Route path="signIn" element={<SimpleCard />} />
       </Routes>
       <Footer />
+
     </>
   );
 }

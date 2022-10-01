@@ -12,12 +12,11 @@ const Featurs = () => {
       </p>
       {/*  */}
 
-      <div className={css.pFlex}>
+      <div className={css.pFlexM}>
         <div
-          className={css.pFlex}
+          className={`${css.pFlex} ${css.width}`}
           style={{
             flexDirection: "column",
-            width: "40%",
             justifyContent: "space-between",
           }}
         >

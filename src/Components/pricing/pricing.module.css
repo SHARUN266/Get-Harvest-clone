@@ -1,0 +1,150 @@
+.container {
+    padding-top: 32px;
+    background-color: #fef8f1;
+  }
+  .priceBox {
+    border: 1px solid #fa5d00;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding: 32px 31px 31px;
+    max-width: 418px;
+    width: 100%;
+    min-height: 292px;
+  }
+  .priceBoxWithBG {
+    border: 1px solid #fa5d00;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding: 32px 31px 31px;
+    max-width: 418px;
+    width: 100%;
+    min-height: 292px;
+    background-image: url(./pro-option.png);
+    background-repeat: no-repeat;
+  }
+  .priceButton {
+    max-width: 354px;
+    width: 100%;
+    height: 48px;
+    margin-bottom: 11px;
+    background-color: #3b8534;
+    color: white;
+    border-radius: 20px;
+    font-weight: 500;
+    font-size: 16px;
+  }
+  .priceButton:hover {
+    color: #3b8534;
+    background-color: rgb(190, 240, 223);
+  }
+  .featuresGrid {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 60px;
+  }
+  .hr {
+    width: 85%;
+    margin: auto;
+    padding-bottom: 80px;
+    border-top: 1px solid #fa5d00;
+  }
+  .flexDiv {
+    width: 80%;
+    margin: auto;
+    padding-bottom: 40px;
+  }
+  .flexBox {
+    border: 1px solid #fa5d00;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding: 24px 22px 24px 22px;
+    width: 31%;
+  }
+  .faq {
+    width: 80%;
+    margin: auto;
+    padding: 100px 0px 100px 0px;
+    background-image: url(//19495563.fs1.hubspotusercontent-na1.net/hubfs/19495563/raw_assets/public/harvest-theme/images/auras/aura-spike-bottom-right.jpg);
+    background-repeat: no-repeat;
+    background-size: 687px 410px;
+    background-position: 0 100%;
+  }
+  .reviewDiv {
+    background: url(https://res.cloudinary.com/spiralyze/image/upload/v1656327113/Harvest/2016_Harvest_Pricing_Big_Redesign-20220621/aura-timeline-thin-bg.png)
+      no-repeat;
+    padding-bottom: 80px;
+    background-size: contain;
+  }
+  .review {
+    width: 100%;
+    /* margin: auto; */
+    margin-top: 80px;
+    padding-bottom: 80px;
+    display: flex;
+    justify-content: center;
+  }
+  .reviewBox1 {
+    text-align: center;
+    padding: 32px 0px;
+    background-color: white;
+    max-width: 254px;
+    width: 100%;
+    height: 240px;
+    box-shadow: -4px 4px 12px rgb(121 45 0 / 4%);
+    border-radius: 8px;
+  }
+  .reviewBox2 {
+    padding: 25px 20px;
+    background-color: white;
+    max-width: 254px;
+    width: 100%;
+    height: 240px;
+    box-shadow: -4px 4px 12px rgb(121 45 0 / 4%);
+    border-radius: 8px;
+    position: relative;
+  }
+  .reviewHr {
+    width: 100%;
+    display: flex;
+    justify-content: left;
+  }
+  .toPlansButton {
+    max-width: 247px;
+    width: 100%;
+    margin: 0 auto;
+    height: 58px;
+    background-color: #fa5d00;
+    border-radius: 20px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    color: #ffffff;
+    margin-bottom: 10px;
+  }
+  .toPlansButton:hover {
+    background-color: #fd7526;
+  }
+  @media only screen and (max-width: 1000px) {
+    .reviewDiv {
+      width: 70%;
+      margin: auto;
+    }
+    .review {
+      width: 80%;
+      margin: auto;
+    }
+    .reviewBox1 {
+      width: 200px;
+      height: 100%;
+    }
+    .reviewBox2 {
+      height: 100%;
+    }
+    .smallerSize {
+      height: auto;
+    }
+  }
+  

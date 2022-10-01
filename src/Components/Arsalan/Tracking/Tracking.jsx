@@ -29,10 +29,19 @@ const Tracking = () => {
             >
               Try Harvest free
             </button>
+            <div> Free 30-day trial. No credit card required.</div>
           </div>{" "}
         </div>
         {/*  */}
-        <div style={{ width: "70%", padding: "5%" }}>
+        <div
+          style={{
+            width: "70%",
+            padding: "5%",
+            display: "flex",
+            justifyContent: "flex-start",
+            gap: "20px",
+          }}
+        >
           <Image
             style={{ height: "100%", margin: "auto" }}
             src="https://www.getharvest.com/hubfs/raw_assets/public/harvest-theme/images/illoglyphs/footer-illo-comp.svg"
