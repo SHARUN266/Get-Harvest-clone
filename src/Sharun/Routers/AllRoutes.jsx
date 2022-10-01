@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "../../Components/Arsalan/Home";
+import WhyHarvest from "../../Components/Arsalan/WhyHarvest";
 import SimpleCard from "../SignIn/SignIn";
 import SignUp from "../SignUp/SignUp";
 //Client ID
@@ -12,6 +13,7 @@ function AllRoutes() {
     <div>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="whyHarvest" element={<WhyHarvest />} />
         <Route path="signUp" element={<SignUp />} />
         <Route path="signIn" element={<SimpleCard />} />
       </Routes>

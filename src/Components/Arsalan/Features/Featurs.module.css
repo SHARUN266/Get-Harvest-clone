@@ -66,6 +66,13 @@ body {
   width: 100%;
   gap: 5%;
 }
+.pFlexM {
+  display: flex;
+  /* justify-content: center; */
+  /* align-items: center; */
+  width: 100%;
+  gap: 5%;
+}
 .lcard {
   border: 1px solid #fa6652;
   padding: 20px;
@@ -74,6 +81,10 @@ body {
 
 .left:hover {
   color: #fa6652;
+}
+
+.width {
+  width: 50%;
 }
 
 /* .big {
@@ -128,3 +139,17 @@ ul li > p:before {
 hr {
   border: 1px solid #fa6652;
 } */
+
+/*  */
+
+@media only screen and (max-width: 844px) {
+  .parentFlex,
+  .pFlexM {
+    flex-direction: column;
+  }
+
+  .width {
+    width: 100%;
+    /* margin: ; */
+  }
+}
