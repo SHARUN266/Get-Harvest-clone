@@ -6,50 +6,60 @@ import Arsalan from "./Components/Arsalan/Home";
 import { Customers } from "./Components/customers/Customers";
 import { Features } from "./Components/features/Features";
 
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { useState } from "react";
 import { auth } from "./Sharun/BackEnd/Firebase";
-import AllRoutes from "./Sharun/Routers/AllRoutes";
 
-
-
-
-
+import Navbar2 from "./Sharun/Navbar/Navbar2";
+import { Route, Routes } from "react-router-dom/dist";
+import SignUp from "./Sharun/SignUp/SignUp";
+import SimpleCard from "./Sharun/SignIn/SignIn";
+import { ProjectData } from "./Context/ProjectDataContext";
+import PrivateRoute from "./Sharun/Components/PrivateRoute";
 
 
 
 function App() {
-  const [userImage,setUserimage]=useState("")
-  const [name,setName]=useState("")
-  const [flag,setFlag]=useState(false)
+  const [userImage, setUserimage] = useState("");
+  const [name, setName] = useState("");
+  const { ChangeFlagStateToFalse, ChangeFlagStateToTrue, flag } =
+    useContext(ProjectData);
 
-  useEffect(()=>{
-    setFlag(false)
-    auth.onAuthStateChanged((user)=>{
-      if(user){
-        setUserimage(user.photoURL)
-        setFlag(true)
-        
-        setName(user.displayName)
-      }else {
-        setUserimage("")
-        setFlag(false)
-        setName("")
+  useEffect(() => {
+    ChangeFlagStateToFalse();
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        setUserimage(user.photoURL);
+        ChangeFlagStateToTrue();
+
+        setName(user.displayName);
+      } else {
+        setUserimage("");
+        ChangeFlagStateToFalse();
+        setName("");
       }
+    });
+  }, []);
 
-    })
-  },[])
-  
- 
   return (
     <>
 
-
-    <Navbar imageUrl={userImage} flag={flag} name={name} />
-   <AllRoutes/>
-     <Footer/>
-
-
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <PrivateRoute>
+             <Navbar2 imageUrl={userImage} flag={flag} name={name} />
+                <Arsalan />
+              </PrivateRoute>
+            </>
+          }
+        />
+        <Route path="signUp" element={<SignUp />} />
+        <Route path="signIn" element={<SimpleCard />} />
+      </Routes>
+      <Footer />
 
     </>
   );

@@ -18,7 +18,7 @@ export default function SimpleCard() {
   
   return (
     <>
-      <Stack p="2rem" color={"font"} alignItems={"center"}>
+      <Stack p="2rem" color={"font"}  bg={useColorModeValue("gray.50", "gray.800")} alignItems={"center"}>
         <Svg />
       </Stack>
       <Flex
@@ -29,7 +29,7 @@ export default function SimpleCard() {
       >
         <Stack spacing={8} mx={"auto"} w={"xl"} py={12} px={6}>
           <Stack align={"center"}>
-            <Heading fontSize={"3xl"}>Sign in to Harvest</Heading>
+            <Heading fontSize={"3xl"}>Sign in to Harvest ID</Heading>
           </Stack>
           <Box bg="#fff8f1" border={"1px solid #ffa26c"} p={8}>
             <GoogleAuthButton />
