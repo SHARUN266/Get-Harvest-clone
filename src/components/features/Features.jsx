@@ -11,6 +11,9 @@ import { Start } from './Start'
 
 
 export const Features = () => {
+
+    // document.title = "Features";
+    
     const timer=useRef()
     const report=useRef()
     const invoice=useRef()
