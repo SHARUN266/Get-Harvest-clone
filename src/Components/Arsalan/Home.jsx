@@ -5,7 +5,7 @@ import Integrations from "./Integrations/Integrations";
 import Learning from "./Learning/Learning";
 import Tracking from "./Tracking/Tracking";
 
-const Arsalan = () => {
+const Home = () => {
   return (
     <>
       <Dashboard />
@@ -17,4 +17,4 @@ const Arsalan = () => {
   );
 };
 
-export default Arsalan;
+export default Home;
