@@ -1,0 +1,13 @@
+
+.logoContainer{    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;  
+    margin-top: 5vh; 
+    margin-bottom: 5vh;    
+}
+
+.logoContainer>div>img{
+    opacity: .2;
+}

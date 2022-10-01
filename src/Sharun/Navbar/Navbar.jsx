@@ -6,13 +6,11 @@ import {
   Button,
   Stack,
   Collapse,
-  Link,
-  Popover,
-  PopoverTrigger,
   useColorModeValue,
   useDisclosure,
   Spacer,
 } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import Svg from "./Svg";
 
@@ -20,7 +18,10 @@ import { useState } from "react";
 import MyButton from "./Button";
 import { AiFillAndroid } from "react-icons/ai";
 import { BsApple } from "react-icons/bs";
-export default function Navbar() {
+
+import SignInAvatar from "./SignInAvatar";
+
+export default function Navbar({ imageUrl, name, flag }) {
   document.title = "Navbar";
   const { isOpen, onToggle } = useDisclosure();
   const [navbar, setNavbar] = useState(false);
@@ -74,36 +75,41 @@ export default function Navbar() {
           direction={"row"}
           spacing={6}
         >
-          <Button
-            variant={"ghost"}
-            display={{ base: "none", md: "inline-flex" }}
-            fontSize={"1.15vw"}
-            fontWeight={550}
-            p="2.9vh 1.5vw"
-            color={"#111"}
-            href={"#"}
-            _hover={{
-              color: "font",
-            }}
-          >
-            Sign In
-          </Button>
-          <Button
-            display={{ base: "none", md: "inline-flex" }}
-            fontSize={"1.15vw"}
-            fontWeight={550}
-            p="2.9vh 1.5vw"
-            shadow={"md"}
-            borderRadius={"16px"}
-            color={"#fff"}
-            bg={"bg"}
-            href={"#"}
-            _hover={{
-              bg: "hover",
-            }}
-          >
-            Try Harvest Free
-          </Button>
+          <Link to="/signIn">
+            <Button
+              variant={"ghost"}
+              display={{ base: "none", md: "inline-flex" }}
+              fontSize={"1.15vw"}
+              fontWeight={550}
+              p="2.9vh 1.5vw"
+              color={"#111"}
+              href={"#"}
+              _hover={{
+                color: "font",
+              }}
+            >
+              Sign In
+            </Button>
+          </Link>
+          <Link to="signUp">
+            <Button
+              display={{ base: "none", md: "inline-flex" }}
+              fontSize={"1.15vw"}
+              fontWeight={550}
+              p="2.9vh 1.5vw"
+              shadow={"md"}
+              borderRadius={"16px"}
+              color={"#fff"}
+              bg={"bg"}
+              href={"#"}
+              _hover={{
+                bg: "hover",
+              }}
+            >
+              Try Harvest Free
+            </Button>
+          </Link>
+          <SignInAvatar name={name} imageUrl={imageUrl} flag={flag} />
         </Stack>
         <Flex
           flex={{ base: 0.1, md: "auto" }}
@@ -114,7 +120,11 @@ export default function Navbar() {
             bg={"gray"}
             onClick={onToggle}
             icon={
-              isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon bg="none" color="#f2f2f2" w={5} h={5} />
+              isOpen ? (
+                <CloseIcon w={3} h={3} />
+              ) : (
+                <HamburgerIcon bg="none" color="#f2f2f2" w={5} h={5} />
+              )
             }
             variant={"ghost"}
             aria-label={"Toggle Navigation"}
@@ -131,24 +141,20 @@ export default function Navbar() {
 
 const DesktopNav = () => {
   return (
-    <Stack direction={"row"} spacing={1}>
+    <Stack direction={"row"} spacing={4}>
       {NAV_ITEMS.map((navItem) => (
-        <Box color={"#111"} key={navItem.label}>
-          <Popover placement={"bottom-start"}>
-            <PopoverTrigger>
-              <Link
-                p={4}
-                href={navItem.href ?? "#"}
-                fontSize={"1.2vw"}
-                fontWeight={400}
-                _hover={{
-                  color: "font",
-                }}
-              >
-                {navItem.label}
-              </Link>
-            </PopoverTrigger>
-          </Popover>
+        <Box
+          fontSize={"1.2vw"}
+          fontWeight={400}
+          _hover={{
+            color: "font",
+          }}
+          color={"#111"}
+          key={navItem.label}
+        >
+          <Link p={4} to={navItem.href}>
+            {navItem.label}
+          </Link>
         </Box>
       ))}
     </Stack>
@@ -157,7 +163,7 @@ const DesktopNav = () => {
 
 const DesktopSubNav = ({ label, href, subLabel }) => {
   return (
-    <Link href={href} role={"group"} display={"block"} p={2} rounded={"md"}>
+    <Link to={href} role={"group"} display={"block"} p={2} rounded={"md"}>
       <Stack direction={"row"} align={"center"}>
         <Box>
           <Text
@@ -181,27 +187,32 @@ const MobileNav = () => {
       ))}
       <Flex textAlign={"center"} direction={"column"} h="50vh" p="2rem 0rem">
         <Stack direction={"row"} justifyContent="space-between">
-          <MyButton>Sign in</MyButton>
-          <MyButton w="50%">Try Harvest free</MyButton>
+          <MyButton>
+            <Link to="signin">Sign in</Link>{" "}
+          </MyButton>
+          <MyButton w="50%">
+            {" "}
+            <Link to="signup">Try Harvest free</Link>{" "}
+          </MyButton>
         </Stack>
         <Spacer />
         <Text color="#f2f2f2">Get the mobile app:</Text>
         <Stack mt="2%" direction={"row"} justifyContent="space-between">
-         
-            <MyButton w="50%">
-              {" "}
-              <BsApple /> <a href="https://apps.apple.com/us/app/harvest-time-expense-tracker/id355395846">iPhone</a>
-            </MyButton>
-          
+          <MyButton w="50%">
+            {" "}
+            <BsApple />{" "}
+            <a href="https://apps.apple.com/us/app/harvest-time-expense-tracker/id355395846">
+              iPhone
+            </a>
+          </MyButton>
 
-         
-            <MyButton w="50%">
-              {" "}
-              
-              <AiFillAndroid /> <a href="https://play.google.com/store/apps/details?id=com.harvestapp">Android</a>
-              
-            </MyButton>
-       
+          <MyButton w="50%">
+            {" "}
+            <AiFillAndroid />{" "}
+            <a href="https://play.google.com/store/apps/details?id=com.harvestapp">
+              Android
+            </a>
+          </MyButton>
         </Stack>
       </Flex>
     </Stack>

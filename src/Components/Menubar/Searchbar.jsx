@@ -1,7 +1,13 @@
 import { Box, Img, Input } from "@chakra-ui/react";
 import React from "react";
 import styles from "./Menubar.module.css";
-const Searchbar = () => {
+const Searchbar = ({searchHandler}) => {
+
+const changeHandler=(e)=>{
+  if(e.code==='Enter'){
+    searchHandler(e.target.value)
+  }
+}
   return (
     <Box className={styles.searchbox} w='270px'>
       <span>
@@ -11,7 +17,7 @@ const Searchbar = () => {
           alt="magnifier"
         />
       </span>
-      <Input type="text"  placeholder="Search by projects or clients" border="0px" focusBorderColor="none" />
+      <Input type="text"  placeholder="Search by projects or clients" border="0px" focusBorderColor="none" onKeyDown={changeHandler} />
     </Box>
   );
 };

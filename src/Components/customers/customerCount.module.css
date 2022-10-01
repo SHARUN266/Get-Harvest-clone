@@ -1,0 +1,55 @@
+.countContainer{
+    width: 80%;
+    margin: auto;
+    margin-top: 2vh;
+    margin-bottom: 10vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid red;
+    border-bottom: 1px solid red;    
+}
+.countDiv1{
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   border-right: 1px solid red;
+   gap: 3vw;   
+   padding: 2vw;
+}
+.countDiv1>div>h1{
+   font-size: 3vw;
+}
+.countDiv1>div>p{
+    font-size: 1.3vw;
+}
+
+.countDiv2{
+    display: flex;
+    justify-content: space-between;    
+    align-items: center;
+    border-right: 1px solid red;
+    gap: 3vw;
+    padding: 2vw;
+}
+.countDiv2>div>h1{
+    font-size: 3vw;
+}
+.countDiv2>div>p{
+    font-size: 1.3vw;
+}
+
+.countDiv3{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3vw;
+}
+.countDiv3>div>h1{
+    font-size: 3vw;
+}
+.countDiv3>div>p{
+    font-size: 1.3vw;
+}
+
+
