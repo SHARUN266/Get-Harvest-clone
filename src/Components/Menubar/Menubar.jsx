@@ -3,11 +3,14 @@ import Searchbar from "./Searchbar";
 import { Box, Button, Flex, Stack } from "@chakra-ui/react";
 import styles from "./Menubar.module.css";
 import { Link } from "react-router-dom";
-const Menubar = () => {
+import { useContext } from "react";
+import { ProjectData } from "../../Context/ProjectDataContext";
+const Menubar = ({project=false,projectDetail=false}) => {
+  const {searchHandler}=useContext(ProjectData)
   return (
     <Box className={styles.menubar}>
       <Flex direction={["column", "row", "row"]} gap='15px' justify="space-between" p='0 20px'>
-        <Box>
+        <Box display={project?'block':'none'}>
           <Stack direction="row">
            <Link to='/projects/new-projects'><Button h="36px" variant className={styles.createBut}>
               <span>+</span>New Project
@@ -21,13 +24,13 @@ const Menubar = () => {
           </Stack>
         </Box>
         {/* Project Detail Page  */}
-        <Box display='none'>
+        <Box display={projectDetail?'block':'none'}>
         <Link to='/projects'><Button h="36px" variant className={styles.importBut}>
               <span></span>Back to Projects
             </Button></Link>
         </Box>
         <Box>
-          <Searchbar />
+          <Searchbar searchHandler={searchHandler} />
         </Box>
       </Flex>
     </Box>

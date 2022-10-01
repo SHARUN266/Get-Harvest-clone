@@ -5,31 +5,9 @@ import { Image } from "@chakra-ui/react";
 const Featurs = () => {
   return (
     <div className={css.main}>
-      <p
-        style={{
-          color: "#fa6652",
-          fontWeight: "bold",
-          fontSize: "25px",
-          margin: "20px 20px 20px 0px",
-        }}
-      >
-        FEATURES
-      </p>
-      <p
-        style={{
-          fontSize: "45px",
-          fontWeight: "350",
-          margin: "20px 20px 20px 0px",
-        }}
-      >
-        Everything you need to keep your team ticking
-      </p>
-      <p
-        style={{
-          fontSize: "25px",
-          margin: "20px 20px 20px 0px",
-        }}
-      >
+      <p className={css.one}>FEATURES</p>
+      <p className={css.two}>Everything you need to keep your team ticking</p>
+      <p className={css.three}>
         Time tracking software that helps you keep time and get insights.
       </p>
       {/*  */}
@@ -40,37 +18,95 @@ const Featurs = () => {
           style={{
             flexDirection: "column",
             width: "40%",
-
             justifyContent: "space-between",
           }}
         >
-          <div className={(css.pFlex, css.lcard)}>
-            <div style={{ width: "30%" }}>
-              <Image src="https://www.getharvest.com/hubfs/raw_assets/public/harvest-theme/images/homepage/nav-time.svg" />
+          <div
+            className={`${css.pFlex} ${css.left}`}
+            style={{
+              border: "1px solid #fa6652",
+              padding: "20px",
+              borderRadius: "20px",
+              alignItems: "center",
+            }}
+          >
+            <div
+              style={{
+                width: "30%",
+              }}
+            >
+              <Image
+                style={{
+                  width: "80%",
+                }}
+                src="https://www.getharvest.com/hubfs/raw_assets/public/harvest-theme/images/homepage/nav-time.svg"
+              />
             </div>
-            <div style={{ width: "60%" }}>
-              <div>Time tracking</div>
-              <div>Simple and intuitive time tracking your team will love.</div>
+            <div>
+              <div style={{ fontSize: "25px" }}>Time tracking</div>
+              <div style={{ fontSize: "18px" }}>
+                Simple and intuitive time tracking your team will love.
+              </div>
             </div>
           </div>
           {/*  */}
-          <div className={(css.pFlex, css.lcard)}>
-            <div className={css.pFlex}>
-              <Image src="https://www.getharvest.com/hubfs/raw_assets/public/harvest-theme/images/homepage/nav-reporting.svg" />
+          <div
+            className={`${css.pFlex} ${css.left}`}
+            style={{
+              border: "1px solid #fa6652",
+              padding: "20px",
+              borderRadius: "20px",
+              alignItems: "center",
+            }}
+          >
+            {" "}
+            <div
+              className={css.pFlex}
+              style={{
+                width: "30%",
+              }}
+            >
+              <Image
+                style={{
+                  width: "80%",
+                }}
+                src="https://www.getharvest.com/hubfs/raw_assets/public/harvest-theme/images/homepage/nav-reporting.svg"
+              />
             </div>
             <div>
-              <div>Reports & analysis</div>
-              <div>Unlock the insights that help your business thrive.</div>
+              <div style={{ fontSize: "25px" }}>Reports & analysis</div>
+              <div style={{ fontSize: "18px" }}>
+                Unlock the insights that help your business thrive.
+              </div>
             </div>
           </div>
           {/*  */}
-          <div className={(css.pFlex, css.lcard)}>
-            <div>
-              <Image src="https://www.getharvest.com/hubfs/raw_assets/public/harvest-theme/images/homepage/nav-invoicing.svg" />
+          <div
+            className={`${css.pFlex} ${css.left}`}
+            style={{
+              border: "1px solid #fa6652",
+              padding: "20px",
+              borderRadius: "20px",
+              alignItems: "center",
+            }}
+          >
+            <div
+              style={{
+                width: "30%",
+              }}
+            >
+              <Image
+                style={{
+                  width: "70%",
+                }}
+                src="https://www.getharvest.com/hubfs/raw_assets/public/harvest-theme/images/homepage/nav-invoicing.svg"
+              />
             </div>
             <div>
-              <div>Invoicing & payments</div>
-              <div>Seamless invoicing and fast online payments.</div>
+              <div style={{ fontSize: "25px" }}>Invoicing & payments</div>
+              <div style={{ fontSize: "18px" }}>
+                Seamless invoicing and fast online payments.
+              </div>
             </div>
           </div>
         </div>

@@ -1,9 +1,33 @@
+body {
+  background-color: #fff8f1;
+}
+
+.main {
+  width: 80%;
+  margin: auto;
+}
+
+.one {
+  color: #fa6652;
+  font-weight: bold;
+  font-size: 25px;
+  margin: 20px 20px 20px 0px;
+}
+.two {
+  font-size: 45px;
+  font-weight: 350;
+  margin: 20px 20px 20px 0px;
+}
+.three {
+  font-size: 25px;
+  margin: 20px 20px 20px 0px;
+}
 .parentFlex {
   display: flex;
   margin: auto;
-  width: 80%;
-  justify-content: center;
-  align-items: center;
+
+  /* justify-content: center;
+  align-items: center; */
   /* gap: 10%; */
 }
 
@@ -11,7 +35,6 @@
   width: 100%;
   gap: auto;
 }
-
 .buttons {
   padding: 15px 30px;
   border-radius: 20px;
@@ -27,15 +50,33 @@
 .buttons:hover {
   opacity: 50%;
 }
+
 .buttonsFlex {
   display: flex;
   width: 100%;
-  gap: 2%;
+  gap: 5%;
   justify-content: flex-start;
   align-items: flex-start;
 }
 
-.big {
+.pFlex {
+  display: flex;
+  /* justify-content: center; */
+  /* align-items: center; */
+  width: 100%;
+  gap: 5%;
+}
+.lcard {
+  border: 1px solid #fa6652;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.left:hover {
+  color: #fa6652;
+}
+
+/* .big {
   font-family: Monarch, Georgia, "Times New Roman", serif;
   font-size: 48px !important;
   line-height: 56px !important;
@@ -50,7 +91,6 @@
   list-style: none;
 }
 .li {
-  /* font-family: MuotoTrial; */
   position: relative;
   padding: 0 10px 16px 0px;
   font-size: 18px;
@@ -70,7 +110,6 @@ ul li > p:before {
   color: black;
   padding-left: 10px;
 }
-/* brand image */
 
 .imageFlex {
   display: flex;
@@ -84,10 +123,8 @@ ul li > p:before {
   margin-top: 30px;
 }
 
-.brandImage {
-  /* width: 5%; */
-}
+
 
 hr {
   border: 1px solid #fa6652;
-}
+} */

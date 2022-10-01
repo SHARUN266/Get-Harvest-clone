@@ -9,6 +9,7 @@ import {
   Select,
   Stack,
   Text,
+  Textarea,
 } from "@chakra-ui/react";
 import styles from "../Menubar/Menubar.module.css";
 import formSty from "./Projects.module.css";
@@ -54,7 +55,7 @@ const ProjectForm = ({changeHandler,projData,submitProjData}) => {
         <Flex direction={["column", "column", "row"]} p="10px">
           <label>Notes</label>
           <Stack w="86%">
-            <Input type="textarea" h='80px' fontSize='14px' onChange={changeHandler} name='notes' value={projData.notes} />
+            <Textarea type="textarea" h='80px' fontSize='14px' onChange={changeHandler} name='notes' value={projData.notes} />
             <Text color="grey">
               Optional. Notes are great for anything you need to reference
               later, like invoice schedules, which you can see when creating an
