@@ -1,0 +1,19 @@
+
+.feature_nav{
+    display: flex;
+    margin-top: 75px;
+
+}
+
+
+
+
+
+
+@media (max-width: 1050px){
+.btn{
+   flex-direction: column; 
+   margin-top: 50px;
+}
+}
+

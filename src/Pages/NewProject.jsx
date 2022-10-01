@@ -1,7 +1,7 @@
 import { Box } from '@chakra-ui/react'
 import React from 'react'
 import { useState } from 'react'
-import { Navigate, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import ProjectForm from '../Components/Project Form/ProjectForm'
 import { addData } from '../projects.api'
 
@@ -22,7 +22,7 @@ const navigate=useNavigate();
 const changeHandler=(e)=>{
 const {name,value}=e.target;
 setProjData({...projData,[name]:value});
-if(e.target.checked){
+if(e.target.checked && e.target.type=='checkbox'){
   setProjData({...projData,task:[...projData.task,{[name]:value}]}); 
 }
 }

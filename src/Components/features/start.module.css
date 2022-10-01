@@ -1,0 +1,60 @@
+.startContainer{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 13.5vh 10vw;    
+    background-color: #fff;
+    line-height: 7vh;
+}
+.startDiv{    
+    width: 50%;    
+}
+.startDiv>h1{
+    font-size: 40px;
+}
+.startDiv>p{
+    font-size: 2vw;
+}
+.startDiv>div{
+    display: flex;
+    gap: 2vw;
+}
+.startDiv>div>button{
+    background-color: #fa5d00;
+    font-size: 1.4vw;
+    font-weight: 500;
+    color: #fff;
+    padding: 0 2vw;
+    border-radius: 20px;
+}
+
+@media only screen and (max-width: 1550px){
+    .startDiv>p{
+        margin-top: 5vh;
+    }
+    .startDiv>div{
+        margin-top: 5vh;
+    }    
+}
+
+@media only screen and (max-width: 1250px){
+    .startContainer{
+        flex-direction: column-reverse;
+        gap: 5vh;
+    }
+    .startDiv{    
+        width: 90%;
+    }
+}
+
+@media only screen and (max-width: 800px){   
+    .startDiv>div{
+        margin-top: 5vh;
+    }
+    .startDiv>div>button{
+        font-size: 1rem;
+    }
+}
+
+
+

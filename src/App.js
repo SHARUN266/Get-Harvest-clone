@@ -2,13 +2,13 @@ import Dashboard from "./Components/Arsalan/Dashboard/Dashboard";
 import Footer from "./Sharun/Footer/Footer";
 import Navbar from "./Sharun/Navbar/Navbar";
 import Arsalan from "./Components/Arsalan/Arsalan";
-import SignUp from "./Sharun/SignUp/SignUp";
-import SimpleCard from "./Sharun/SignIn/SignIn";
-import AllRoutes from "./Sharun/Routers/AllRoutes";
-import { useEffect } from "react";
-import { auth } from "./Sharun/BackEnd/Firebase";
-import { useState } from "react";
-import { Box } from "@chakra-ui/react";
+
+import { Customers } from "./Components/customers/Customers";
+import { Features } from "./Components/features/Features";
+
+
+
+
 
 function App() {
   const [userImage,setUserimage]=useState("")
@@ -35,9 +35,18 @@ function App() {
  
   return (
     <>
+
     <Navbar imageUrl={userImage} flag={flag} name={name} />
    <AllRoutes/>
      <Footer/>
+
+      <Navbar />
+      {/* <Dashboard /> */}
+      {/* <Arsalan /> */}
+     
+      
+      <Footer />
+
     </>
   );
 }

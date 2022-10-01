@@ -50,13 +50,20 @@ class InvoiceForm extends Component {
     this.setState({...this.state})
   }
   createAndDownloadPdf = () => {
-    axios.post('/create-pdf', this.state)
+    axios.post('/invoice/create-pdf', this.state)
       .then(() => axios.get('/fetch-pdf', { responseType: 'blob' }))
       .then((res) => {
         const pdfBlob = new Blob([res.data], { type: 'application/pdf' });
 
         saveAs(pdfBlob, 'newPdf.pdf');
       })
+  }
+  test=()=>{
+    axios.get('/invoice')
+      .then((res)=>{
+        console.log(res)
+      })
+      
   }
   cancelCh=()=>{
     return <Navigate to="/invoice" replace={true} />
@@ -164,11 +171,12 @@ class InvoiceForm extends Component {
     <Text fontWeight="500">Notes (optional, displayed on invoice)</Text>
     <Textarea />
     </Box>
-    <Flex>
-    <Link to="/invoice/new"><Button colorScheme={"green"} mr="10px">Save Changes </Button></Link>
+    <Flex mb="50px">
+    <Link to="/invoice/preview"><Button colorScheme={"green"} mr="10px">Save Changes </Button></Link>
     <Link to="/invoice"> <Button variant="outline">Cancel</Button></Link>
     </Flex>
-   {/* <button onClick={this.createAndDownloadPdf}>Download PDF</button> */}
+   <button onClick={this.createAndDownloadPdf}>Download PDF</button>
+   <button onClick={this.test}>Download PDF</button>
       </Box>
     );
   }
