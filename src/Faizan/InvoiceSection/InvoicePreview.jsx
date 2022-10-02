@@ -1,19 +1,19 @@
 import { DownloadIcon, EditIcon } from '@chakra-ui/icons';
 import { Box, Button, CircularProgress, Flex, Heading, Hide, Icon, Table, TableContainer, Tbody, Td, Text, Th, Thead, Tr } from '@chakra-ui/react';
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useEffect } from 'react';
-import { saveAs } from 'file-saver';
 import { Link } from 'react-router-dom';
-
+import jsPDF from "jspdf"
 function InvoicePreview(props) {
     // const today = new Date()
     const [state,setState]=useState({})
     const [amt,setAmt]=useState(0)
     const [loading,setLoading]=useState(false)
+    const Ref=useRef(null)
     const getInvoice = () => {
         setLoading(true)
-        axios.get('http://localhost:8080/invoice')
+        axios.get('https://timetracker201rct.herokuapp.com/invoice')
             .then((res)=>{
                 
                 let total=0
@@ -22,20 +22,17 @@ function InvoicePreview(props) {
                  })
             setState(res.data[res.data.length-1])
             setAmt(total)
-            console.log(state)
             setLoading(false)
             })
         }
      
     const createAndDownloadPdf = () => {
-    axios.post('http://localhost:8080/invoice/create-pdf',state)
-      .then(() => axios.get('http://localhost:8080/fetch-pdf', { responseType: 'blob' }))
-      .then((res) => {
-        const pdfBlob = new Blob([res.data], { type: 'application/pdf' });
-
-        saveAs(pdfBlob, 'Invoice.pdf');
-        
-      })
+    var doc=new jsPDF("p","pt","a4")
+    doc.html(Ref.current,{
+        callback: function(pdf){
+            pdf.save("Invoice.pdf")
+        }
+    })
   }
         useEffect(()=>{
              getInvoice()
@@ -49,7 +46,7 @@ function InvoicePreview(props) {
      }
     return (
         
-        <Box w="90%" m="auto" my="30px">
+        <Box w="90%" m="auto" my="50px" overflowX="scroll">
             <Flex justify="space-between" flexDirection={["column","row","row"]} alignItems="center">
                 <Box>
                     <Heading fontWeight="500">Invoice</Heading>
@@ -65,8 +62,8 @@ function InvoicePreview(props) {
                     <Button variant="outline" onClick={createAndDownloadPdf} >PDF<Icon ml="5px" as={DownloadIcon}/></Button>
                 </Flex>
             </Flex>
-            <Hide below='sm'>
-            <Box w="100%" my="50px" p="50px" boxShadow='base' border="1px solid #CCCCCC">
+           
+            <Box  ref={Ref} w="595px" maxHeight="836px" m="auto" my="50px" p="50px" boxShadow='base' border="1px solid #CCCCCC">
                 <Flex justify="space-between" alignItems="center">
                     <Heading fontWeight="700">INVOICE</Heading>
                     <Flex justify="end" alignItems="center">
@@ -100,15 +97,15 @@ function InvoicePreview(props) {
                
   
 
-                <TableContainer mt="40px" >
-                    <Table size='sm'>
+                <TableContainer mt="40px" overflowX="none" overflowY="none">
+                    <Table size='sm' overflowX="none" overflowY="none">
                         <Thead>
                         <Tr >
-                            <Th  borderRight="1px solid #CCCCCC">Item Type</Th>
-                            <Th w="50%" borderRight="1px solid #CCCCCC">Description</Th>
-                            <Th  borderRight="1px solid #CCCCCC" isNumeric>Quantity</Th>
-                            <Th  borderRight="1px solid #CCCCCC" isNumeric>Unit Price</Th>
-                            <Th  isNumeric>Amount</Th>
+                            <Th color="black"  borderRight="1px solid #CCCCCC">Item Type</Th>
+                            <Th color="black" w="50%" borderRight="1px solid #CCCCCC">Description</Th>
+                            <Th color="black"  borderRight="1px solid #CCCCCC" isNumeric>Quantity</Th>
+                            <Th color="black" borderRight="1px solid #CCCCCC" isNumeric>Unit Price</Th>
+                            <Th color="black"  isNumeric>Amount</Th>
                         </Tr>
                         </Thead>
                         <Tbody>
@@ -133,7 +130,7 @@ function InvoicePreview(props) {
                     </Flex>
                    </Flex>
             </Box>
-            </Hide>
+           
         </Box>
     );
 }
