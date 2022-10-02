@@ -48,7 +48,9 @@ function Time() {
      }
      const handleSubmit=()=>{
         setLoading(true)
-        axios.post("https://timetracker201rct.herokuapp.com/time",state)
+        let data=state
+        data={...state,day:day}
+        axios.post("https://timetracker201rct.herokuapp.com/time",data)
          .then(()=>{
             getTimeList()
             onClose()
@@ -62,7 +64,7 @@ function Time() {
     const handleDelete=()=>{
         setLoading(true)
         const id=modalData
-        axios.delete(`https://timetracker201rct.herokuapp.com/${id}`).then(()=>{
+        axios.delete(`https://timetracker201rct.herokuapp.com/time/${id}`).then(()=>{
            getTimeList()
            eonClose()
         })
@@ -80,6 +82,7 @@ function Time() {
      const getTimeList=()=>{
         setLoading(true)
         axios.get("https://timetracker201rct.herokuapp.com/time").then((res)=>{
+            console.log(res.data)
             const sundayData=res.data.filter((el)=>{
                 return el.day===0
             })
@@ -362,7 +365,7 @@ function Time() {
                                     <Text fontWeight="500">{el.project}</Text>
                                     <Text>{el.type}</Text>
                                     </Box></Td>
-                                <Td>{time}.00</Td>
+                                <Td>{time}</Td>
                                 <Td><Button px="40px" variant="outline" onClick={(e)=>handleStart(e,el._id,el.time,0)}>
                                     
                                     Start </Button></Td>
@@ -391,7 +394,7 @@ function Time() {
                                     <Text fontWeight="500">{el.project}</Text>
                                     <Text>{el.type}</Text>
                                     </Box></Td>
-                                <Td>{time}.00</Td>
+                                <Td>{time}</Td>
                                 <Td><Button px="40px" variant="outline" onClick={(e)=>handleStart(e,el._id,el.time,1)}>
                                     
                                     Start </Button></Td>
@@ -420,7 +423,7 @@ function Time() {
                                     <Text fontWeight="500">{el.project}</Text>
                                     <Text>{el.type}</Text>
                                     </Box></Td>
-                                <Td>{time}.00</Td>
+                                <Td>{time}</Td>
                                 <Td><Button px="40px" variant="outline" onClick={(e)=>handleStart(e,el._id,el.time,2)}>
                                     
                                     Start </Button></Td>
@@ -448,7 +451,7 @@ function Time() {
                                     <Text fontWeight="500">{el.project}</Text>
                                     <Text>{el.type}</Text>
                                     </Box></Td>
-                                <Td>{time}.00</Td>
+                                <Td>{time}</Td>
                                 <Td><Button px="40px" variant="outline" onClick={(e)=>handleStart(e,el._id,el.time,3)}>
                                     
                                     Start </Button></Td>
@@ -477,7 +480,7 @@ function Time() {
                                     <Text fontWeight="500">{el.project}</Text>
                                     <Text>{el.type}</Text>
                                     </Box></Td>
-                                <Td>{time}.00</Td>
+                                <Td>{time}</Td>
                                 <Td><Button px="40px" variant="outline" onClick={(e)=>handleStart(e,el._id,el.time,4)}>
                                     
                                     Start </Button></Td>
@@ -506,7 +509,7 @@ function Time() {
                                     <Text fontWeight="500">{el.project}</Text>
                                     <Text>{el.type}</Text>
                                     </Box></Td>
-                                <Td>{time}.00</Td>
+                                <Td>{time}</Td>
                                 <Td><Button px="40px" variant="outline" onClick={(e)=>handleStart(e,el._id,el.time,5)}>
                                     
                                     Start </Button></Td>
