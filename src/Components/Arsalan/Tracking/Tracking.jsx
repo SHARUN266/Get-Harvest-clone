@@ -1,12 +1,16 @@
 import React from "react";
 import css from "./tracking.module.css";
 import { Image } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 const Tracking = () => {
   return (
     <div className={css.main}>
       {/*  */}
-      <div className={css.pFlex}>
+      <div
+        className={css.pFlex}
+        // style={{ alignItems: "center" }}
+      >
         {/*  */}
         <div>
           {/* <p className={css.one}>INTEGRATIONS</p> */}
@@ -23,13 +27,25 @@ const Tracking = () => {
             }}
           >
             {" "}
-            <button
-              className={css.buttons}
-              style={{ backgroundColor: "#fa5d00" }}
+            <Link to="/signIn">
+              <button
+                className={css.buttons}
+                style={{ backgroundColor: "#fa5d00" }}
+              >
+                Try Harvest free
+              </button>
+            </Link>
+            <div
+              style={{
+                fontSize: "18px",
+                paddingTop: "15px",
+                paddingLeft: "15px",
+                color: "#787672",
+              }}
             >
-              Try Harvest free
-            </button>
-            <div> Free 30-day trial. No credit card required.</div>
+              {" "}
+              Free 30-day trial. No credit card required.
+            </div>
           </div>{" "}
         </div>
         {/*  */}
@@ -49,12 +65,12 @@ const Tracking = () => {
         </div>
       </div>
 
-      <hr
+      {/* <hr
         style={{
           marginTop: "30px",
           marginBottom: "30px",
         }}
-      ></hr>
+      ></hr> */}
     </div>
   );
 };

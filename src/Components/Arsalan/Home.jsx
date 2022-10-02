@@ -4,16 +4,16 @@ import Featurs from "./Features/Featurs";
 import Integrations from "./Integrations/Integrations";
 import Learning from "./Learning/Learning";
 import Tracking from "./Tracking/Tracking";
-
-
+import Customer from "./Customer/Customer";
 
 const Home = () => {
-
   return (
     <>
       <Dashboard />
       <Featurs />
       <Integrations />
+      <Customer />
+
       <Learning />
       <Tracking />
     </>
