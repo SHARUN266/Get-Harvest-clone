@@ -9,6 +9,7 @@ class InvoiceForm extends Component {
   state = {
     client: 'client',
     invoiceId: 0,
+    company:"",
     dueDate: 0,
     items:[
       {
@@ -24,8 +25,19 @@ class InvoiceForm extends Component {
       
     ]
   }
+  getProject=()=>{
+    axios.get("https://getharvest-fake-api.herokuapp.com/projects").then((res)=>{
+        this.setState({...this.state,clientdata:res.data})
+    }).catch((err)=>{
+      console.log("failed")
+    })
+ }
   flag=false
-  handleChange = ({ target: { value, name }}) => this.setState({ [name]: value })
+  handleChange = ({ target: { value, name }}) =>{
+    if(this.state.clientdata===undefined){
+      this.getProject()
+    }
+    this.setState({ [name]: value })}
   handleItemsChange=({ target: { value, name }},id)=>{
     this.state.items[id-1][name]=value
      this.setState({...this.state})
@@ -36,7 +48,7 @@ class InvoiceForm extends Component {
      })
     this.setState({...this.state})
   }
-
+ 
   handleAdd=()=>{
   this.state.items.push({
       id:this.state.items.length+1,
@@ -63,13 +75,14 @@ class InvoiceForm extends Component {
 
   handleSave=()=>{
    if(this.state.client!=="client" && this.state.client!==""){
-    axios.post("/invoice",this.state)
+    axios.post("http://localhost:8080/invoice",this.state)
     .then((res)=>{
      this.flag=true
      this.setState({...this.state})
     }).catch((err)=>{
-      alert("Please fill the details correctly")
+      alert("Please fill the form correctly")
     })
+   
    }else{
     alert("Please fill the details correctly")
    }
@@ -85,47 +98,61 @@ class InvoiceForm extends Component {
     return sum
    }
   render() {
+    if(this.state.project===undefined){
+      
+    }
     if(this.state.client!=="client" && this.state.client!=="" && this.flag===true){
       return <Navigate to="/invoice/preview" replace={true} />
     }
     return (
 
-      <Box w="90%" m="auto">
+      <Box w="90%" m="auto" my="30px">
         <Heading fontWeight="500" borderBottom="1px solid #dddd" pb="20px">New invoice for Example Client</Heading>
          
          <Flex w="100%" mt="30px">
           <Box w="50%" pr="15%">
-            <Flex justify="space-betwen" alignItems="center" mb="10px" >
-              <Text fontWeight="500" width="40%">Invoice ID</Text>
+            <Flex justify="space-betwen" direction={["column","row","row"]} alignItems="center" mb="10px" >
+              <Text fontWeight="500" width={["100%","50%","40%"]}>Invoice ID</Text>
               <Input type="number" focusBorderColor="black" isRequired name="invoiceId" onChange={this.handleChange}/>
             </Flex>
-            <Flex justify="space-betwen" alignItems="center" mb="10px">
-              <Text fontWeight="500" width="40%" >PO Number</Text>
+            <Flex justify="space-betwen" direction={["column","row","row"]} alignItems="center" mb="10px">
+              <Text fontWeight="500"  width={["100%","50%","40%"]} >PO Number</Text>
               <Input type="number" focusBorderColor="black" name="poNumber" onChange={this.handleChange}/>
             </Flex>
-            <Flex justify="space-betwen" alignItems="center" mb="10px">
-              <Text fontWeight="500" width="40%">Issue Date</Text>
+            <Flex justify="space-betwen" direction={["column","row","row"]} alignItems="center" mb="10px">
+              <Text fontWeight="500"  width={["100%","50%","40%"]}>Issue Date</Text>
               <Input  type="date" focusBorderColor="black" name="issueDate" onChange={this.handleChange}/>
             </Flex>
-            <Flex justify="space-betwen" alignItems="center" mb="10px">
-              <Text fontWeight="500" width="40%">Due Date</Text>
+            <Flex justify="space-betwen" direction={["column","row","row"]} alignItems="center" mb="10px">
+              <Text fontWeight="500"  width={["100%","50%","40%"]}>Due Date</Text>
               <Input type="date" focusBorderColor="black" name="dueDate" onChange={this.handleChange}/>
             </Flex>
           </Box>
           <Box w="50%" pr="15%">
-          <Flex justify="space-betwen" alignItems="center" mb="10px" >
-              <Text fontWeight="500" width="40%">Invoice For</Text>
-              <Input type="text" focusBorderColor="black" name="client" isRequired onChange={this.handleChange}/>
+          <Flex justify="space-betwen" direction={["column","row","row"]} alignItems="center" mb="10px" >
+              <Text fontWeight="500"  width={["100%","50%","40%"]}>Invoice From</Text>
+              <Input type="text" focusBorderColor="black" name="company" isRequired onChange={this.handleChange}/>
             </Flex>
-            <Flex justify="space-betwen" alignItems="center" mb="10px">
-              <Text fontWeight="500" width="40%" >Tax</Text>
+          <Flex justify="space-betwen" direction={["column","row","row"]} alignItems="center" mb="10px" >
+              <Text fontWeight="500"  width={["100%","50%","40%"]}>Invoice For</Text>
+              {/* <Input type="text" focusBorderColor="black" name="company" isRequired onChange={this.handleChange}/> */}
+              <Select name="client" focusBorderColor="black" onChange={this.handleChange} placeholder='Select Client' mb="10px">
+                {this.state.clientdata && this.state.clientdata.map((el)=>{
+                  return  <option key={el._id} value={el.client}>{el.client}</option>
+                    
+                })}
+                </Select>
+            </Flex>
+            
+            <Flex justify="space-betwen" direction={["column","row","row"]} alignItems="center" mb="10px">
+              <Text fontWeight="500"  width={["100%","50%","40%"]} >Tax</Text>
               <Flex align="center" w="100%">
               <Input  type="number" placeholder='0' focusBorderColor="black" name="tax" onChange={this.handleChange}/>
               <Text fontSize="24px" ml="10px">%</Text>
               </Flex>
             </Flex>
-            <Flex justify="space-betwen" alignItems="center" mb="10px">
-              <Text fontWeight="500" width="40%" >Discount</Text>
+            <Flex justify="space-betwen" direction={["column","row","row"]} alignItems="center" mb="10px">
+              <Text fontWeight="500"  width={["100%","50%","40%"]} >Discount</Text>
               <Flex align="center" w="100%">
               <Input  type="number" placeholder='0' focusBorderColor="black" name="discount" onChange={this.handleChange}/>
               <Text fontSize="24px" ml="10px">%</Text>
@@ -134,8 +161,8 @@ class InvoiceForm extends Component {
           </Box>
          </Flex>
 
-         <Flex justify="space-betwen" alignItems="center" my="20px" >
-          <Text fontWeight="500" width="11%" >Subject</Text>
+         <Flex justify="space-betwen" direction={["column","row","row"]} alignItems="center" my="20px" >
+          <Text fontWeight="500" width={["20%","15%","11%"]} >Subject</Text>
           <Input type="text" name="subject" focusBorderColor="black" onChange={this.handleChange}/>
          </Flex>
 
@@ -155,7 +182,7 @@ class InvoiceForm extends Component {
       {this.state.items.map((el)=>{
        return <Tr key={el.id} >
         <Td w="20%" >
-          <Flex alignItems="center" justify="space-between">
+          <Flex alignItems="center"  justify="space-between">
           <Button size="sm" variant="outline" mr="5px" onClick={()=>this.handleClick(el.id)}>X</Button>
         <Select name="service" placeholder='Select option' onChange={(e)=>this.handleItemsChange(e,el.id)}>
           <option value='service'>Service</option>

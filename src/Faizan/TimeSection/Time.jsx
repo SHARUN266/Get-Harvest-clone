@@ -14,6 +14,7 @@ import {
 import axios from 'axios';
 
 import React, { useEffect, useState } from 'react';
+import { useRef } from 'react';
 function Time() {
     const days=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
     const months=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sept","Oct","Nov","Dec"]
@@ -38,6 +39,7 @@ function Time() {
     const [friData,setFriData] = useState([])
     const [satData, setSatData] = useState([])
     const [project, setProject] = useState([])
+    const Ref=useRef(null)
     const handleTabsChange = (index) => {
         setTabIndex(index)
       }
@@ -46,7 +48,7 @@ function Time() {
      }
      const handleSubmit=()=>{
         setLoading(true)
-        axios.post("/time",state)
+        axios.post("http://localhost:8080/time",state)
          .then(()=>{
             getTimeList()
             onClose()
@@ -60,7 +62,7 @@ function Time() {
     const handleDelete=()=>{
         setLoading(true)
         const id=modalData
-        axios.delete(`/time/${id}`).then(()=>{
+        axios.delete(`http://localhost:8080/time/${id}`).then(()=>{
            getTimeList()
            eonClose()
         })
@@ -77,7 +79,7 @@ function Time() {
      }
      const getTimeList=()=>{
         setLoading(true)
-        axios.get("/time").then((res)=>{
+        axios.get("http://localhost:8080/time").then((res)=>{
             const sundayData=res.data.filter((el)=>{
                 return el.day===0
             })
@@ -112,7 +114,7 @@ function Time() {
      const handleUpate=()=>{
         setLoading(true)
         const id=modalData
-        axios.patch(`/time/${id}`,state).then(()=>{
+        axios.patch(`http://localhost:8080/time/${id}`,state).then(()=>{
            getTimeList()
            onClose()
         })
@@ -157,46 +159,72 @@ function Time() {
         
     },[])
     
-   const handleStart=(e,id,time)=>{
-        // if(toggle===0 || toggle===id){
-        //    var varCounter = time;
-        //    var inter =setInterval(()=>{
-        //     if(toggle===0){
-        //         clearInterval(inter)
-        //     }else{
-        //         console.log(varCounter++)
-        //     }
-        //    },1000);
-
-            if(e.target.innerText==="Start"){
-                e.target.style.variant="solid"
-                e.target.style.backgroundColor="black"
-                e.target.style.color="White"
-                e.target.innerHTML=`<Image w="100px" mr="10px" src="https://thumbs.gfycat.com/BossyImmenseDuck-size_restricted.gif"/>Stop`
-            //    setToggle(id)
-                
-                }else{
+   const handleStart=(e,id,time,d)=>{
+          if(Ref.current===null || toggle===id){
+            let count=time
+            
+                 if(toggle===0){
+                    e.target.style.variant="solid"
+                    e.target.style.backgroundColor="black"
+                    e.target.style.color="White"
+                    
+                    e.target.innerHTML=`<Image w="100px" mr="10px" src="https://thumbs.gfycat.com/BossyImmenseDuck-size_restricted.gif"/>Stop`
+                    Ref.current=setInterval(()=>{
+                        count=count+0.01
+                        let num=count+""
+                        num=num.split(".")
+                        if(Number(num[1][0])===6){
+                            count=count+0.40
+                        }
+                         count=Number(count).toFixed(2)
+                         count=Number(count)
+                        axios.patch(`https://timetracker201rct.herokuapp.com/time/${id}`,{time:count}).then(()=>{
+                            axios.get("https://timetracker201rct.herokuapp.com/time").then((res)=>{
+                                if(d===6){
+                                    const satData=res.data.filter((el)=>{
+                                        return el.day===6
+                                    })
+                                    setSatData(satData)
+                                }
+                            })    
+                       
+                          
+                         })
+                         
+                    },60000)
+                    setToggle(id)
+                 }
+                else{
                     e.target.style.variant="outline"
                     e.target.style.backgroundColor="White"
                     e.target.style.color="Black"
                     e.target.innerHTML=`Start`
-                    //  setToggle(0)
+                    clearInterval(Ref.current)
+                    Ref.current=null;
+                    setToggle(0)
                 }
-        
-    
+            
+          }
+
+          
+           
+
+                 
    }
    if(loading===true){
-    return <Box w="90%" display="flex" justifyContent="center" m="auto" pt="100px">
+    return <Box w="90%" display="flex" justifyContent="center" m="auto" my="50px" pt="100px">
          <CircularProgress isIndeterminate size='200px' color='#FA5D00' />
     </Box>
  }
     return (
-        <Box w="80%" m="auto">
-            <Flex ml="3em" mb="20px" alignItems="center">
+        <Box w={["95%","80%","80%"]} m="auto" overflowX="auto">
+            <Flex ml="3em" mb="20px" wrap="wrap-reverse" alignItems="center">
                 <Button variant="outline" borderLeftRadius={"1em"} onClick={handleDec}><Icon as={ArrowBackIcon}/></Button>
                 <Button mr="15px" variant="outline"borderRightRadius={"1em"} onClick={handleInc}><Icon as={ArrowForwardIcon}/></Button>
+                <Flex alignItems="center" wrap="wrap">
                 <Heading fontWeight="500" mr="10px">Today: </Heading>
                 <Heading fontWeight="400">{days[day]}, {mday} {months[month]}  </Heading>
+                </Flex>
             </Flex>
             
             {/* Modal for add begins here */}
@@ -466,7 +494,7 @@ function Time() {
                                     <Text>{el.type}</Text>
                                     </Box></Td>
                                 <Td>{time}</Td>
-                                <Td><Button px="40px" variant="outline" onClick={(e)=>handleStart(e,el._id,el.time)}>
+                                <Td><Button px="40px" variant="outline" onClick={(e)=>handleStart(e,el._id,el.time,6)}>
                                     
                                     Start </Button></Td>
                                 <Td>
