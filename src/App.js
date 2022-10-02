@@ -115,7 +115,7 @@ function App() {
           path="/invoice"
           element={
             <>
-            <Box h={["auto","auto","100vh"]}>
+            <Box h={["auto","auto","auto"]}>
               <Navbar2 imageUrl={userImage} flag={flag} name={name} />
               <Invoice />
               </Box>
@@ -126,7 +126,7 @@ function App() {
           path="/invoice/new"
           element={
             <>
-            <Box h={["auto","auto","100vh"]}>
+            <Box h={["auto","auto","auto"]}>
               <Navbar2 imageUrl={userImage} flag={flag} name={name} />
               <InvoiceForm />
               </Box>
@@ -137,12 +137,12 @@ function App() {
           path="/invoice/preview"
           element={
             <>
-            <Box h={["auto","auto","100vh"]}>
+            
               <PrivateRoute>
             <Navbar2 imageUrl={userImage} flag={flag} name={name} />
               <InvoicePreview />
               </PrivateRoute>
-            </Box>
+          
              
             </>
           }
@@ -151,7 +151,7 @@ function App() {
           path="/time"
           element={
             <>
-            <Box h={["auto","auto","100vh"]}>
+            <Box h={["auto","auto","auto"]}>
             <PrivateRoute>
               <Navbar2 imageUrl={userImage} flag={flag} name={name} />
               <Time />

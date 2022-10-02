@@ -256,7 +256,7 @@ function Time() {
     </Box>
  }
     return (
-        <Box w={["95%","80%","80%"]} m="auto" my="50px" overflowX="auto">
+        <Box w={["95%","80%","80%"]} m="auto" mt="5%" overflowX="auto">
             <Flex ml="3em" mb="20px" wrap="wrap-reverse" alignItems="center">
                 <Button variant="outline" borderLeftRadius={"1em"} onClick={handleDec}><Icon as={ArrowBackIcon}/></Button>
                 <Button mr="15px" variant="outline"borderRightRadius={"1em"} onClick={handleInc}><Icon as={ArrowForwardIcon}/></Button>
