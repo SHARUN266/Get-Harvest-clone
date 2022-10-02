@@ -24,6 +24,7 @@ import InvoicePreview from "./Faizan/InvoiceSection/InvoicePreview";
 import Projects from "./Pages/Projects";
 import NewProject from "./Pages/NewProject";
 import ProjectDetail from "./Pages/ProjectDetail";
+import { Box } from "@chakra-ui/react";
 
 /**
  * This is the main component of the app.
@@ -84,11 +85,13 @@ function App() {
           path="/pricing"
           element={
             <>
+            
               <Navbar imageUrl={userImage} flag={flag} name={name} />
               <Pricing />
             </>
           }
         />
+        
         <Route
           path="/feature"
           element={
@@ -112,8 +115,10 @@ function App() {
           path="/invoice"
           element={
             <>
+            <Box h={["auto","auto","100vh"]}>
               <Navbar2 imageUrl={userImage} flag={flag} name={name} />
               <Invoice />
+              </Box>
             </>
           }
         />
@@ -121,8 +126,10 @@ function App() {
           path="/invoice/new"
           element={
             <>
+            <Box h={["auto","auto","100vh"]}>
               <Navbar2 imageUrl={userImage} flag={flag} name={name} />
               <InvoiceForm />
+              </Box>
             </>
           }
         />
@@ -130,8 +137,13 @@ function App() {
           path="/invoice/preview"
           element={
             <>
-              <Navbar2 imageUrl={userImage} flag={flag} name={name} />
+            <Box h={["auto","auto","100vh"]}>
+              <PrivateRoute>
+            <Navbar2 imageUrl={userImage} flag={flag} name={name} />
               <InvoicePreview />
+              </PrivateRoute>
+            </Box>
+             
             </>
           }
         />
@@ -139,10 +151,12 @@ function App() {
           path="/time"
           element={
             <>
+            <Box h={["auto","auto","100vh"]}>
             <PrivateRoute>
               <Navbar2 imageUrl={userImage} flag={flag} name={name} />
               <Time />
               </PrivateRoute>
+              </Box>
             </>
           }
         />

@@ -283,4 +283,8 @@ const NAV_ITEMS = [
     label: "Pricing",
     href: "/pricing",
   },
+  {
+    label:"Services",
+    href:"/time"
+  }
 ];

@@ -7,7 +7,7 @@ import Tracking from "./Tracking/Tracking";
 import Customer from "./Customer/Customer";
 
 const Home = () => {
-  document.title = "Home";
+  document.title = "Time Tracking Software With Invoicing | Harvest";
   return (
     <>
       <div style={{ width: "100%", background: "#fff8f1" }}>
