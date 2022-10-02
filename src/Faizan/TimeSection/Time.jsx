@@ -29,7 +29,7 @@ function Time() {
     const [loading, setLoading] = useState(false)
     const [state, setState] = useState({})
     const [modalData, setModalData] = useState("")
-    const [toggle, setToggle] = useState(0)
+    const [toggle, setToggle] = useState(null)
     
     const [sunData, setSunData] = useState([])
     const [monData,setMonData] = useState([])
@@ -163,12 +163,12 @@ function Time() {
           if(Ref.current===null || toggle===id){
             let count=time
             
-                 if(toggle===0){
+                 if(toggle===null){
                     e.target.style.variant="solid"
                     e.target.style.backgroundColor="black"
                     e.target.style.color="White"
                     
-                    e.target.innerHTML=`<Image w="100px" mr="10px" src="https://thumbs.gfycat.com/BossyImmenseDuck-size_restricted.gif"/>Stop`
+                    e.target.innerHTML=`<Image w="100%" mr="10px" src="https://thumbs.gfycat.com/BossyImmenseDuck-size_restricted.gif"/>Stop`
                     Ref.current=setInterval(()=>{
                         count=count+0.01
                         let num=count+""
@@ -186,6 +186,12 @@ function Time() {
                                     })
                                     setSatData(satData)
                                 }
+                                else if(d===0){
+                                    const sunData=res.data.filter((el)=>{
+                                        return el.day===0
+                                    })
+                                    setSunData(sunData)
+                                }
                             })    
                        
                           
@@ -201,8 +207,8 @@ function Time() {
                     e.target.innerHTML=`Start`
                     clearInterval(Ref.current)
                     Ref.current=null;
-                    setToggle(0)
-                }
+                    setToggle(null)
+                }   
             
           }
 

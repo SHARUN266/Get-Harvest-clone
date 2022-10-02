@@ -126,7 +126,7 @@ function App() {
           path="/invoice/new"
           element={
             <>
-            <Box h={["auto","auto","100vh"]}>
+            <Box h={["auto","auto","auto"]}>
               <Navbar2 imageUrl={userImage} flag={flag} name={name} />
               <InvoiceForm />
               </Box>
