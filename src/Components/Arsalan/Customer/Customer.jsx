@@ -1,9 +1,8 @@
 import React from "react";
 import css from "./Customer.module.css";
 import { Image } from "@chakra-ui/react";
-import pic from "../Pictures/1.png";
 import { Link } from "react-router-dom";
-
+import PicC from "../Pictures/1.png"
 const Customer = () => {
   return (
     <div className={css.main}>
@@ -27,7 +26,7 @@ const Customer = () => {
             <img
               alt=""
               style={{ width: "100%", margin: "auto", margin: "auto" }}
-              src="http://localhost:3000/1.png"
+              src={PicC}
             />
           </div>
           <Link to="/customers">

@@ -7,15 +7,17 @@ import Tracking from "./Tracking/Tracking";
 import Customer from "./Customer/Customer";
 
 const Home = () => {
-  document.title="Home"
+  document.title = "Home";
   return (
     <>
-      <Dashboard />
-      <Featurs />
-      <Integrations />
-      <Customer />
+      <div style={{ width: "100%", background: "#fff8f1" }}>
+        <Dashboard />
+        <Featurs />
+        <Integrations />
+        <Customer />
+        <Learning />
+      </div>
 
-      <Learning />
       <Tracking />
     </>
   );

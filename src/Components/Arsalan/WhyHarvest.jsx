@@ -7,14 +7,17 @@ import TimeTracking from "./Timetracking/TimeTracking";
 import Trusted from "./Trusted/Trusted";
 
 const WhyHarvest = () => {
-  document.title="Why Harvest?"
+  document.title = "Why Harvest?";
   return (
     <>
-      <Help />
-      <Empower />
-      <TimeTracking />
-      <ProjectsTrack />
-      <Trusted />
+      <div style={{ width: "100%", background: "#fff8f1" }}>
+        <Help />
+        <Empower />
+        <TimeTracking />
+        <ProjectsTrack />
+        <Trusted />
+      </div>
+
       <Tracking />
     </>
   );
