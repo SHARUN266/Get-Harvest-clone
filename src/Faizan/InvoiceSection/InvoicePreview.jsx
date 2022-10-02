@@ -1,5 +1,5 @@
 import { DownloadIcon, EditIcon } from '@chakra-ui/icons';
-import { Box, Button, CircularProgress, Flex, Heading, Icon, Table, TableContainer, Tbody, Td, Text, Th, Thead, Tr } from '@chakra-ui/react';
+import { Box, Button, CircularProgress, Flex, Heading, Hide, Icon, Table, TableContainer, Tbody, Td, Text, Th, Thead, Tr } from '@chakra-ui/react';
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useEffect } from 'react';
@@ -11,10 +11,9 @@ function InvoicePreview(props) {
     const [state,setState]=useState({})
     const [amt,setAmt]=useState(0)
     const [loading,setLoading]=useState(false)
-    
     const getInvoice = () => {
         setLoading(true)
-        axios.get('/invoice')
+        axios.get('http://localhost:8080/invoice')
             .then((res)=>{
                 
                 let total=0
@@ -23,17 +22,18 @@ function InvoicePreview(props) {
                  })
             setState(res.data[res.data.length-1])
             setAmt(total)
+            console.log(state)
             setLoading(false)
             })
         }
      
     const createAndDownloadPdf = () => {
-    axios.post('/invoice/create-pdf',state)
-      .then(() => axios.get('/fetch-pdf', { responseType: 'blob' }))
+    axios.post('http://localhost:8080/invoice/create-pdf',state)
+      .then(() => axios.get('http://localhost:8080/fetch-pdf', { responseType: 'blob' }))
       .then((res) => {
         const pdfBlob = new Blob([res.data], { type: 'application/pdf' });
 
-        saveAs(pdfBlob, 'newPdf.pdf');
+        saveAs(pdfBlob, 'Invoice.pdf');
         
       })
   }
@@ -49,14 +49,14 @@ function InvoicePreview(props) {
      }
     return (
         
-        <Box w="90%" m="auto">
-            <Flex justify="space-between" alignItems="center">
+        <Box w="90%" m="auto" my="30px">
+            <Flex justify="space-between" flexDirection={["column","row","row"]} alignItems="center">
                 <Box>
                     <Heading fontWeight="500">Invoice</Heading>
-                    <Flex textAlign="left" alignItems="center">
+                    <Flex textAlign="left" wrap="wrap" alignItems="center">
                         <Text fontWeight="500" mr="5px">Latest activity: </Text>
                         <Text>Invoice created. </Text>
-                        <Text mr="5px" fontWeight="500">Faizan Ghani</Text>
+                        <Text mr="5px" fontWeight="500">{state.company}</Text>
                         <Text >  on {state.issueDate}</Text>
                     </Flex>
                 </Box>
@@ -65,13 +65,13 @@ function InvoicePreview(props) {
                     <Button variant="outline" onClick={createAndDownloadPdf} >PDF<Icon ml="5px" as={DownloadIcon}/></Button>
                 </Flex>
             </Flex>
-           
+            <Hide below='sm'>
             <Box w="100%" my="50px" p="50px" boxShadow='base' border="1px solid #CCCCCC">
                 <Flex justify="space-between" alignItems="center">
                     <Heading fontWeight="700">INVOICE</Heading>
                     <Flex justify="end" alignItems="center">
                         <Text color="#555555" pr="10px" borderRight="1px solid #CCCCCC" mr="10px">Invoice From</Text>
-                        <Text fontWeight='500'>{state.client}</Text>
+                        <Text fontWeight='500'>{state.company}</Text>
                     </Flex>
                 </Flex>
                 <Flex justify="space-between" alignItems="center" mt="30px">
@@ -97,7 +97,10 @@ function InvoicePreview(props) {
                     
                     </Box>
                 </Flex>
-                <TableContainer mt="40px">
+               
+  
+
+                <TableContainer mt="40px" >
                     <Table size='sm'>
                         <Thead>
                         <Tr >
@@ -130,6 +133,7 @@ function InvoicePreview(props) {
                     </Flex>
                    </Flex>
             </Box>
+            </Hide>
         </Box>
     );
 }
