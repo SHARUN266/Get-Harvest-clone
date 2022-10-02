@@ -137,12 +137,12 @@ function App() {
           path="/invoice/preview"
           element={
             <>
-            <Box h={["auto","auto","100vh"]}>
+            
               <PrivateRoute>
             <Navbar2 imageUrl={userImage} flag={flag} name={name} />
               <InvoicePreview />
               </PrivateRoute>
-            </Box>
+          
              
             </>
           }

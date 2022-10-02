@@ -212,12 +212,12 @@ function Time() {
                  
    }
    if(loading===true){
-    return <Box w="90%" display="flex" justifyContent="center" m="auto" my="50px" pt="100px">
+    return <Box w="90%" display="flex" justifyContent="center" m="auto" my="50px"  pt="100px">
          <CircularProgress isIndeterminate size='200px' color='#FA5D00' />
     </Box>
  }
     return (
-        <Box w={["95%","80%","80%"]} m="auto" overflowX="auto">
+        <Box w={["95%","80%","80%"]} m="auto" mt="5%" overflowX="auto">
             <Flex ml="3em" mb="20px" wrap="wrap-reverse" alignItems="center">
                 <Button variant="outline" borderLeftRadius={"1em"} onClick={handleDec}><Icon as={ArrowBackIcon}/></Button>
                 <Button mr="15px" variant="outline"borderRightRadius={"1em"} onClick={handleInc}><Icon as={ArrowForwardIcon}/></Button>

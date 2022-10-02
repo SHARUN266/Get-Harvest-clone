@@ -8,7 +8,7 @@ import styles from "../Components/Menubar/Menubar.module.css";
 const Projects = () => {
 
   return (
-    <Box>
+    <Box mb="10rem">
       <Menubar project={true} />
       <Text className={styles.heading}>Projects</Text>
       <ProjectList />
