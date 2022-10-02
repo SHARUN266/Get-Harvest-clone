@@ -17,6 +17,8 @@
     "firebase": "^9.10.0",
     "framer-motion": "^6.5.1",
     "gapi-script": "^1.2.0",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^2.5.1",
     "jwt-decode": "^3.1.2",
     "react": "^18.2.0",
     "react-csv": "^2.2.2",
