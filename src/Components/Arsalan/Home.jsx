@@ -7,6 +7,7 @@ import Tracking from "./Tracking/Tracking";
 import Customer from "./Customer/Customer";
 
 const Home = () => {
+  document.title="Home"
   return (
     <>
       <Dashboard />

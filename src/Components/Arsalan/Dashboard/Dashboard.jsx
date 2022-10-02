@@ -5,7 +5,8 @@ import css from "./Dashboard.module.css";
 
 const Dashboard = () => {
   return (
-    <>
+    <div style={{width:"100%",background:"#fff8f1"}}>
+    
       <div className={css.parentFlex}>
         <div className={css.childFlex}>
           <p
@@ -143,7 +144,7 @@ const Dashboard = () => {
         />
       </div>
       <hr />
-    </>
+    </div>
   );
 };
 

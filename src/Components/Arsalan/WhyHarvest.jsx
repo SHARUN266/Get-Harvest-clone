@@ -7,6 +7,7 @@ import TimeTracking from "./Timetracking/TimeTracking";
 import Trusted from "./Trusted/Trusted";
 
 const WhyHarvest = () => {
+  document.title="Why Harvest?"
   return (
     <>
       <Help />

@@ -1,9 +1,11 @@
+
 .parentFlex {
   display: flex;
   margin: auto;
   width: 80%;
   justify-content: center;
   align-items: center;
+
   /* gap: 10%; */
 }
 
