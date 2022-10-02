@@ -1,22 +1,44 @@
 import React, { useState } from "react";
-import { FormControl, Text, Input, Stack, Button } from "@chakra-ui/react";
+import { FormControl, Text, Input, Stack, Button,Alert,AlertIcon } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../BackEnd/Firebase";
 import { useAuth0 } from "@auth0/auth0-react";
+/**
+ * A function that handles the state of the email and password fields.
+ * @param values - The state of the email and password fields.
+ * @param setValues - A function that updates the state of the email and password fields.
+ * @returns None
+ */
 export default function FormComp() {
   const { isAuthenticated } = useAuth0();
   const navigate = useNavigate();
   const [isLoading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  /**
+   * A function that handles the state of the email and password fields.
+   * @param values - The state of the email and password fields.
+   * @param setValues - A function that updates the state of the email and password fields.
+   * @returns None
+   */
   const [values, setValues] = useState({
     email: "",
     password: "",
   });
+  /**
+   * Handles changes to the filter configuration. 
+   * @param e - the event object that is passed in when the input changes.
+   * @returns None
+   */
   const handleChange = (e) => {
     const { name, value } = e.target;
     setValues({ ...values, [name]: value });
   };
+  /**
+   * Handles the form submission.
+   * @param e - the event object.
+   * @returns None
+   */
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isAuthenticated) {
@@ -29,12 +51,19 @@ export default function FormComp() {
         setError("Please! Enter your password");
       } else {
         setLoading(true);
+        /**
+         * Signs in the user with their email and password. 
+         * @param auth - The firebase auth object. 
+         * @param email - The email of the user. 
+         * @param password - The password of the user. 
+         * @returns None 
+         */
         signInWithEmailAndPassword(auth, values.email, values.password)
           .then(async (res) => {
             console.log(res);
 
             setLoading(false);
-            navigate("/");
+            navigate("/time");
           })
           .catch((err) => {
             setLoading(false);
@@ -71,7 +100,20 @@ export default function FormComp() {
           align={"start"}
           justify={"space-between"}
         >
-          <Text color="red">{error}</Text>
+          <Stack
+            direction={{ base: "column", sm: "row" }}
+            align={"start"}
+            justify={"space-between"}
+          >
+            {error === "" ? (
+              ""
+            ) : (
+              <Alert status="error" color={"red"}>
+                <AlertIcon />
+                {error}
+              </Alert>
+            )}
+          </Stack>
         </Stack>
         <Button
           onClick={handleSubmit}

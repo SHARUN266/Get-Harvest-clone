@@ -6,6 +6,14 @@ import {getAuth} from 'firebase/auth'
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+/**
+ * The Firebase configuration object.           
+ * @type {object}           
+ */
+/**
+ * The Firebase configuration object.           
+ * @type {object}           
+ */
 const firebaseConfig = {
   apiKey: "AIzaSyAMXX4k1Pz4cii_K8A6uFln3cLAPNFsVwo",
   authDomain: "masaiprojectgetharvest.firebaseapp.com",

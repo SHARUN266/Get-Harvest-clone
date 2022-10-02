@@ -21,6 +21,14 @@ import { BsApple } from "react-icons/bs";
 
 import SignInAvatar from "./SignInAvatar";
 
+
+/**
+ * A component that renders the navbar.
+ * @param imageUrl - the url of the image to be displayed in the navbar.
+ * @param name - the name of the site.
+ * @param flag - the flag of the site.
+ * @returns None
+ */
 export default function Navbar({ imageUrl, name, flag }) {
  
   const { isOpen, onToggle } = useDisclosure();

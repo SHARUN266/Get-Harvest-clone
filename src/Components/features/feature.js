@@ -1,3 +1,8 @@
+/**
+ * A function that takes in an array of objects and returns a string of HTML that can be used to render a list of objects.           
+ * @param {Array<Object>} data - an array of objects that contain the data to be rendered.           
+ * @returns {string} - a string of HTML that can be used to render the data.           
+ */
 const data=[
     {
         "id":1,

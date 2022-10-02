@@ -2,9 +2,6 @@ import Dashboard from "./Components/Arsalan/Dashboard/Dashboard";
 import Footer from "./Sharun/Footer/Footer";
 import Navbar from "./Sharun/Navbar/Navbar";
 
-
-
-
 import { useContext, useEffect } from "react";
 import { useState } from "react";
 import { auth } from "./Sharun/BackEnd/Firebase";
@@ -18,7 +15,7 @@ import PrivateRoute from "./Sharun/Components/PrivateRoute";
 import Home from "./Components/Arsalan/Home";
 import WhyHarvest from "./Components/Arsalan/WhyHarvest";
 import Pricing from "./Components/pricing/Pricing";
-import  {Features}  from "./Components/features/feature.jsx";
+import { Features } from "./Components/features/feature.jsx";
 import { Customers } from "./Components/customers/Customers";
 import Invoice from "./Faizan/InvoiceSection/invoice";
 import Time from "./Faizan/TimeSection/Time";
@@ -28,7 +25,10 @@ import Projects from "./Pages/Projects";
 import NewProject from "./Pages/NewProject";
 import ProjectDetail from "./Pages/ProjectDetail";
 
-
+/**
+ * This is the main component of the app.
+ * @returns None
+ */
 
 function App() {
   const [userImage, setUserimage] = useState("");
@@ -36,9 +36,16 @@ function App() {
   const { ChangeFlagStateToFalse, ChangeFlagStateToTrue, flag } =
     useContext(ProjectData);
 
+  /**
+   * A React hook that is called when the component is mounted.        
+   * @returns None        
+   */
   useEffect(() => {
     ChangeFlagStateToFalse();
     auth.onAuthStateChanged((user) => {
+      /**
+              * If the user is logged in, set the user image and name to the user's details.        * Otherwise, set the user image and name to the default values.        
+       */
       if (user) {
         setUserimage(user.photoURL);
         ChangeFlagStateToTrue();
@@ -54,52 +61,120 @@ function App() {
 
   return (
     <>
-
       <Routes>
-        
         <Route
           path="/"
           element={
             <>
-              
-             <Navbar imageUrl={userImage} flag={flag} name={name} />
-              <Home/>
-            
+              <Navbar imageUrl={userImage} flag={flag} name={name} />
+              <Home />
             </>
           }
         />
-        <Route path="/whyharvest" element={
-        <>
-        <Navbar imageUrl={userImage} flag={flag} name={name} />
-        <WhyHarvest/>
-        </>
-        }/>
-        <Route path="/pricing" element={
-        <>
-        <Navbar imageUrl={userImage} flag={flag} name={name} />
-        <Pricing/>
-        </>}/>
-        <Route path="/feature" element={<>
-        <Navbar imageUrl={userImage} flag={flag} name={name} />
-        <Features/>
-        </>}/>
-        <Route path="/customers" element={<>
-        <Navbar imageUrl={userImage} flag={flag} name={name} />
-        <Customers/>
-        </>}/>
-        
-        <Route path="/invoice" element={<Invoice/>}/>
-        <Route path="/invoice/new" element={<InvoiceForm/>}/>
-        <Route path="/invoice/preview" element={<InvoicePreview/>}/>
-        <Route path="/time" element={<Time/>}/>
-        <Route path="/projects" element={<Projects/>}/>
-        <Route path="/projects/new-projects" element={<NewProject/>}/>
-        <Route path="/projects/:id" element={<ProjectDetail/>}/>
-        <Route path="signUp" element={<SignUp />} />
-        <Route path="signIn" element={<SimpleCard />} />
+        <Route
+          path="/whyharvest"
+          element={
+            <>
+              <Navbar imageUrl={userImage} flag={flag} name={name} />
+              <WhyHarvest />
+            </>
+          }
+        />
+        <Route
+          path="/pricing"
+          element={
+            <>
+              <Navbar imageUrl={userImage} flag={flag} name={name} />
+              <Pricing />
+            </>
+          }
+        />
+        <Route
+          path="/feature"
+          element={
+            <>
+              <Navbar imageUrl={userImage} flag={flag} name={name} />
+              <Features />
+            </>
+          }
+        />
+        <Route
+          path="/customers"
+          element={
+            <>
+              <Navbar imageUrl={userImage} flag={flag} name={name} />
+              <Customers />
+            </>
+          }
+        />
+
+        <Route
+          path="/invoice"
+          element={
+            <>
+              <Navbar2 imageUrl={userImage} flag={flag} name={name} />
+              <Invoice />
+            </>
+          }
+        />
+        <Route
+          path="/invoice/new"
+          element={
+            <>
+              <Navbar2 imageUrl={userImage} flag={flag} name={name} />
+              <InvoiceForm />
+            </>
+          }
+        />
+        <Route
+          path="/invoice/preview"
+          element={
+            <>
+              <Navbar2 imageUrl={userImage} flag={flag} name={name} />
+              <InvoicePreview />
+            </>
+          }
+        />
+        <Route
+          path="/time"
+          element={
+            <>
+              <Navbar2 imageUrl={userImage} flag={flag} name={name} />
+              <Time />
+            </>
+          }
+        />
+        <Route
+          path="/projects"
+          element={
+            <>
+              <Navbar2 imageUrl={userImage} flag={flag} name={name} />
+              <Projects />
+            </>
+          }
+        />
+        <Route
+          path="/projects/new-projects"
+          element={
+            <>
+              <Navbar2 imageUrl={userImage} flag={flag} name={name} />
+              <NewProject />
+            </>
+          }
+        />
+        <Route
+          path="/projects/:id"
+          element={
+            <>
+              <Navbar2 imageUrl={userImage} flag={flag} name={name} />
+              <ProjectDetail />
+            </>
+          }
+        />
+        <Route path="/signUp" element={<SignUp />} />
+        <Route path="/signIn" element={<SimpleCard />} />
       </Routes>
       <Footer />
-
     </>
   );
 }

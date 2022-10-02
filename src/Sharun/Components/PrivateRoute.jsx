@@ -7,7 +7,9 @@ export default function PrivateRoute({children}) {
   const {flag}=useContext(ProjectData)
   const {isAuthenticated}=useAuth0()
 
- 
+ if(!flag){
+  return <Navigate to="/time"/>
+ }
 
  return children
   

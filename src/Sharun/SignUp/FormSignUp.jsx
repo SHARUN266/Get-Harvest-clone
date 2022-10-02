@@ -1,5 +1,5 @@
 import React from "react";
-import { Stack, Text, FormLabel, Spacer } from "@chakra-ui/react";
+import { Stack, Text,Alert,AlertIcon, FormLabel, Spacer } from "@chakra-ui/react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { FormControl, Input, Button } from "@chakra-ui/react";
 import { useState } from "react";
@@ -74,7 +74,7 @@ export default function FormSignUp() {
             await updateProfile(user, {
               displayName: values.firstname,
             });
-            navigate("/");
+            navigate("/time");
             setLoading(false);
           })
           .catch((err) => {
@@ -116,7 +116,13 @@ export default function FormSignUp() {
           align={"start"}
           justify={"space-between"}
         >
-          <Text color="red">{error}</Text>
+          {
+            error===""?"": <Alert status='error' color={'red'}>
+            <AlertIcon />
+            {error}
+          </Alert>
+          }
+          
         </Stack>
         <Button
           bg={"#188433"}

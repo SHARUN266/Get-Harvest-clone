@@ -13,6 +13,10 @@ import FormComp from "./FormComp";
 import From from "./FormComp";
 import GoogleAuthButton from "./GoogleAuthButton";
 
+/**
+ * A simple card that displays a logo and some text.
+ * @returns A simple card that displays a logo and some text.
+ */
 export default function SimpleCard() {
   document.title = "Sign In";
   
