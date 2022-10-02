@@ -8,8 +8,9 @@ export default function PrivateRoute({children}) {
   const {isAuthenticated}=useAuth0()
 
  if(!flag){
-  return <Navigate to="/time"/>
+  return <Navigate to="/signUp"/>
  }
+ 
 
  return children
   

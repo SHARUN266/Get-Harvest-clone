@@ -21,7 +21,6 @@ import { BsApple } from "react-icons/bs";
 
 import SignInAvatar from "./SignInAvatar";
 
-
 /**
  * A component that renders the navbar.
  * @param imageUrl - the url of the image to be displayed in the navbar.
@@ -30,9 +29,12 @@ import SignInAvatar from "./SignInAvatar";
  * @returns None
  */
 export default function Navbar({ imageUrl, name, flag }) {
- 
   const { isOpen, onToggle } = useDisclosure();
   const [navbar, setNavbar] = useState(false);
+  /**
+   * Changes the background of the navbar depending on the scroll position.
+   * @returns None
+   */
   const ChangeNavBackground = () => {
     if (window.scrollY >= 100) {
       setNavbar(true);
@@ -40,11 +42,19 @@ export default function Navbar({ imageUrl, name, flag }) {
       setNavbar(false);
     }
   };
+  /**
+   * Changes the background color of the navbar when the user scrolls down.
+   * @returns None
+   */
   window.addEventListener("scroll", ChangeNavBackground);
 
   return (
     <Box
-      bg={{ base: "mdBgFrNav", md: "mdBgFrNav", lg: "#fff" }}
+      bg={
+        navbar
+          ? { base: "mdBgFrNav", md: "mdBgFrNav", lg: "#fff" }
+          : { base: "mdBgFrNav", md: "mdBgFrNav", lg: "#fff8f1" }
+      }
       zIndex={50}
       shadow={navbar ? "md" : "none"}
       position="sticky"

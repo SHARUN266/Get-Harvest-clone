@@ -7,6 +7,10 @@ import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../BackEnd/Firebase";
 import { useNavigate } from "react-router-dom";
 
+/**
+ * Returns an array of objects containing the label, type, and name of each input field.
+ * @returns An array of objects containing the label, type, and name of each input field.
+ */
 const formNameLabel = [
   {
     label: "First name",
@@ -35,7 +39,16 @@ const formNameLabel = [
   },
 ];
 export default function FormSignUp() {
+  /**
+   * A function that handles the submission of the form.
+   * @param event - The event object.
+   */
   const { isAuthenticated } = useAuth0();
+  /**
+   * Navigates to the given URL.
+   * @param url - the URL to navigate to.
+   * @returns None
+   */
   const navigate = useNavigate();
   const [error, setError] = useState("");
   const [isLoading, setLoading] = useState(false);
@@ -124,6 +137,15 @@ export default function FormSignUp() {
           }
           
         </Stack>
+        /**
+         * A button that can be used to submit a form.  It can be used to submit a form, or to submit a form
+         * while the form is loading.  It can also be used to display a loading message.  It can also be used
+         * to display a loading message while the form is loading.  It can also be used to display a loading
+         * message while the form is loading.  It can also be used to display a loading message while the
+         * form is loading.  It can also be used to display a loading message while the form is loading.  It
+         * can also be used to display a loading message while the form is loading.  It can also be used to
+         *
+         */
         <Button
           bg={"#188433"}
           color={"white"}

@@ -18,6 +18,10 @@ import DividerComp from "../SignIn/DividerComp";
 import FormSignUp from "./FormSignUp";
 import PolicyPage from "./PolicyPage";
 
+/**
+ * The SignUp page. 
+ * @returns The SignUp page.
+ */
 export default function SignUp() {
   document.title="Sign Up with us!"
   return (

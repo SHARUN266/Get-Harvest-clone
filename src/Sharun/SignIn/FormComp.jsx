@@ -115,6 +115,14 @@ export default function FormComp() {
             )}
           </Stack>
         </Stack>
+        /**
+         * A button that can be used to submit a form.  It can be used to submit a form, or to submit a form and then
+         * display a loading spinner.  It can also be used to display a loading spinner and then submit a form.  It can
+         * also be used to display a loading spinner and then submit a form and then display a loading spinner.  It can
+         * also be used to display a loading spinner and then submit a form and then display a loading spinner and then
+         * submit a form.  It can also be used to display a loading spinner and then submit a form and then display a
+         * loading spinner and then submit a form and then
+         */
         <Button
           onClick={handleSubmit}
           loadingText="Please! wait..."

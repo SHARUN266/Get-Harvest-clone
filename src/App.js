@@ -139,8 +139,10 @@ function App() {
           path="/time"
           element={
             <>
+            <PrivateRoute>
               <Navbar2 imageUrl={userImage} flag={flag} name={name} />
               <Time />
+              </PrivateRoute>
             </>
           }
         />
@@ -148,8 +150,10 @@ function App() {
           path="/projects"
           element={
             <>
+            <PrivateRoute>
               <Navbar2 imageUrl={userImage} flag={flag} name={name} />
               <Projects />
+              </PrivateRoute>
             </>
           }
         />
@@ -157,8 +161,10 @@ function App() {
           path="/projects/new-projects"
           element={
             <>
+            <PrivateRoute>
               <Navbar2 imageUrl={userImage} flag={flag} name={name} />
               <NewProject />
+              </PrivateRoute>
             </>
           }
         />
@@ -166,11 +172,17 @@ function App() {
           path="/projects/:id"
           element={
             <>
+            <PrivateRoute>
               <Navbar2 imageUrl={userImage} flag={flag} name={name} />
               <ProjectDetail />
+              </PrivateRoute>
             </>
           }
         />
+        /**
+         * A route element that renders a sign up or sign in form.       
+         * @returns None       
+         */
         <Route path="/signUp" element={<SignUp />} />
         <Route path="/signIn" element={<SimpleCard />} />
       </Routes>

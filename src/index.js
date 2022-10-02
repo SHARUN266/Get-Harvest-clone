@@ -17,6 +17,10 @@ const theme = extendTheme({
   },
 });
 root.render(
+  /**
+   * The main entry point for the application.       
+   * @returns None       
+   */
   <ChakraProvider theme={theme}>
     <BrowserRouter>
       <Auth0Provider

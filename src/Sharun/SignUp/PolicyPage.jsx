@@ -12,6 +12,10 @@ import {
   } from "@chakra-ui/react";
   import { Link } from 'react-router-dom'
   import { FormControl, Input, Button } from "@chakra-ui/react";
+/**
+ * The main page for the policy page.
+ * @returns A React component that renders the policy page.
+ */
 export default function PolicyPage() {
   return (
     <Stack mt="5%" color={"gray.500"} direction={"column"}>

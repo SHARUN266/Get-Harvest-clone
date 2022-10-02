@@ -24,6 +24,10 @@ import SignInAvatar from "./SignInAvatar";
 export default function Navbar2({ imageUrl, name, flag }) {
   const { isOpen, onToggle } = useDisclosure();
   const [navbar, setNavbar] = useState(false);
+  /**
+   * Changes the navbar background color depending on the scroll position.
+   * @returns None
+   */
   const ChangeNavBackground = () => {
     if (window.scrollY >= 100) {
       setNavbar(true);
@@ -35,6 +39,13 @@ export default function Navbar2({ imageUrl, name, flag }) {
 
   return (
     <Box
+      /**
+       * A function that returns the background color of the navbar.
+       * @param base - the base color of the navbar.
+       * @param md - the color of the navbar on medium devices.
+       * @param lg - the color of the navbar on large devices.
+       * @returns the background color of the navbar.
+       */
       bg={{ base: "mdBgFrNav", md: "mdBgFrNav", lg: "font" }}
       zIndex={50}
       shadow={navbar ? "md" : "none"}
