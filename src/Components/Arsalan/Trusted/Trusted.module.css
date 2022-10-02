@@ -1,0 +1,105 @@
+.parentFlex {
+  display: flex;
+  margin: auto;
+  width: 80%;
+  justify-content: center;
+  align-items: center;
+  /* gap: 10%; */
+}
+
+.childFlex {
+  width: 100%;
+  gap: auto;
+}
+.three {
+  font-size: 25px;
+  margin: 20px 20px 20px 0px;
+}
+
+.buttons {
+  padding: 15px 30px;
+  border-radius: 20px;
+  border: none;
+  color: white;
+  font-weight: 1000;
+  font-size: 20px;
+  background-color: #1d1e1c;
+
+  position: relative;
+  top: -1px;
+}
+.buttons:hover {
+  opacity: 50%;
+}
+.buttonsFlex {
+  display: flex;
+  width: 100%;
+  gap: 2%;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.big {
+  /* font-family: Monarch, Georgia, "Times New Roman", serif; */
+  font-size: 42px !important;
+  line-height: 56px !important;
+  margin-top: 2px;
+  font-style: normal;
+  font-weight: 200;
+
+  color: #1d1e1c;
+  margin-bottom: 24px;
+}
+.ul {
+  list-style: none;
+}
+.li {
+  /* font-family: MuotoTrial; */
+  position: relative;
+  padding: 0 10px 16px 0px;
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 400;
+  /* color: #6d6e6d; */
+}
+ul li > p:before {
+  content: "✓";
+  color: #fa6652;
+  font-size: large;
+  font-weight: bold;
+}
+
+.span {
+  font-weight: bold;
+  color: black;
+  padding-left: 10px;
+}
+/* brand image */
+
+.imageFlex {
+  display: flex;
+  width: 80%;
+  margin: auto;
+  justify-content: space-around;
+  align-items: center;
+  opacity: 40%;
+  gap: auto;
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
+.brandImage {
+  /* width: 5%; */
+}
+
+hr {
+  border: 1px solid #fa6652;
+}
+
+/*  */
+
+@media only screen and (max-width: 844px) {
+  .parentFlex {
+    flex-direction: column;
+  }
+}

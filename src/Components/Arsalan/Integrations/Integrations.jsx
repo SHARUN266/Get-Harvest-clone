@@ -1,6 +1,7 @@
 import React from "react";
 import css from "./Integrations.module.css";
 import { Image } from "@chakra-ui/react";
+import { Link } from 'react-router-dom';
 
 const Integrations = () => {
   return (
@@ -23,6 +24,8 @@ const Integrations = () => {
             Your favorite apps work seamlessly with Harvest so you can keep
             projects on track however you work.
           </p>
+          <Link to="/feature"></Link>
+
           <div
             className={css.parentFlex}
             style={{

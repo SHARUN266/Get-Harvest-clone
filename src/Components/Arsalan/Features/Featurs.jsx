@@ -1,6 +1,7 @@
 import React from "react";
 import css from "./Featurs.module.css";
 import { Image } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 const Featurs = () => {
   return (
@@ -20,111 +21,120 @@ const Featurs = () => {
             justifyContent: "space-between",
           }}
         >
-          <div
-            className={`${css.pFlex} ${css.left}`}
-            style={{
-              border: "1px solid #fa6652",
-              padding: "20px",
-              borderRadius: "20px",
-              alignItems: "center",
-            }}
-          >
+          <Link to="/feature">
             <div
+              className={`${css.pFlex} ${css.left}`}
               style={{
-                width: "30%",
+                border: "1px solid #fa6652",
+                padding: "20px",
+                borderRadius: "20px",
+                alignItems: "center",
               }}
             >
-              <Image
+              <div
                 style={{
-                  width: "80%",
+                  width: "30%",
                 }}
-                src="https://www.getharvest.com/hubfs/raw_assets/public/harvest-theme/images/homepage/nav-time.svg"
-              />
-            </div>
-            <div>
-              <div style={{ fontSize: "25px" }}>Time tracking</div>
-              <div style={{ fontSize: "18px" }}>
-                Simple and intuitive time tracking your team will love.
+              >
+                <Image
+                  style={{
+                    width: "80%",
+                  }}
+                  src="https://www.getharvest.com/hubfs/raw_assets/public/harvest-theme/images/homepage/nav-time.svg"
+                />
+              </div>
+              <div>
+                <div style={{ fontSize: "25px" }}>Time tracking</div>
+                <div style={{ fontSize: "18px" }}>
+                  Simple and intuitive time tracking your team will love.
+                </div>
               </div>
             </div>
-          </div>
+          </Link>
           {/*  */}
-          <div
-            className={`${css.pFlex} ${css.left}`}
-            style={{
-              border: "1px solid #fa6652",
-              padding: "20px",
-              borderRadius: "20px",
-              alignItems: "center",
-            }}
-          >
+          <Link to="/feature">
+            <div
+              className={`${css.pFlex} ${css.left}`}
+              style={{
+                border: "1px solid #fa6652",
+                padding: "20px",
+                borderRadius: "20px",
+                alignItems: "center",
+              }}
+            >
+              {" "}
+              <div
+                className={css.pFlex}
+                style={{
+                  width: "30%",
+                }}
+              >
+                <Image
+                  style={{
+                    width: "80%",
+                  }}
+                  src="https://www.getharvest.com/hubfs/raw_assets/public/harvest-theme/images/homepage/nav-reporting.svg"
+                />
+              </div>
+              <div>
+                <div style={{ fontSize: "25px" }}>Reports & analysis</div>
+                <div style={{ fontSize: "18px" }}>
+                  Unlock the insights that help your business thrive.
+                </div>
+              </div>
+            </div>
+          </Link>
+
+          {/*  */}
+          <Link to="/feature">
             {" "}
             <div
-              className={css.pFlex}
+              className={`${css.pFlex} ${css.left}`}
               style={{
-                width: "30%",
+                border: "1px solid #fa6652",
+                padding: "20px",
+                borderRadius: "20px",
+                alignItems: "center",
               }}
             >
-              <Image
+              <div
                 style={{
-                  width: "80%",
+                  width: "30%",
                 }}
-                src="https://www.getharvest.com/hubfs/raw_assets/public/harvest-theme/images/homepage/nav-reporting.svg"
-              />
-            </div>
-            <div>
-              <div style={{ fontSize: "25px" }}>Reports & analysis</div>
-              <div style={{ fontSize: "18px" }}>
-                Unlock the insights that help your business thrive.
+              >
+                <Image
+                  style={{
+                    width: "70%",
+                  }}
+                  src="https://www.getharvest.com/hubfs/raw_assets/public/harvest-theme/images/homepage/nav-invoicing.svg"
+                />
+              </div>
+              <div>
+                <div style={{ fontSize: "25px" }}>Invoicing & payments</div>
+                <div style={{ fontSize: "18px" }}>
+                  Seamless invoicing and fast online payments.
+                </div>
               </div>
             </div>
-          </div>
-          {/*  */}
-          <div
-            className={`${css.pFlex} ${css.left}`}
-            style={{
-              border: "1px solid #fa6652",
-              padding: "20px",
-              borderRadius: "20px",
-              alignItems: "center",
-            }}
-          >
-            <div
-              style={{
-                width: "30%",
-              }}
-            >
-              <Image
-                style={{
-                  width: "70%",
-                }}
-                src="https://www.getharvest.com/hubfs/raw_assets/public/harvest-theme/images/homepage/nav-invoicing.svg"
-              />
-            </div>
-            <div>
-              <div style={{ fontSize: "25px" }}>Invoicing & payments</div>
-              <div style={{ fontSize: "18px" }}>
-                Seamless invoicing and fast online payments.
-              </div>
-            </div>
-          </div>
+          </Link>
         </div>
         <div>
           <Image src="https://www.getharvest.com/hs-fs/hubfs/screenshot-home-timesheets.png?width=1700&name=screenshot-home-timesheets.png"></Image>
         </div>
       </div>
-
-      <div
-        className={css.parentFlex}
-        style={{
-          justifyContent: "flex-start",
-          marginTop: "30px",
-          marginBottom: "50px",
-        }}
-      >
-        {" "}
-        <button className={css.buttons}>Discover all features</button>
-      </div>
+      <Link to="/feature">
+        <div
+          className={css.parentFlex}
+          style={{
+            justifyContent: "flex-start",
+            marginTop: "30px",
+            marginBottom: "50px",
+          }}
+        >
+          {" "}
+          <button className={css.buttons}>Discover all features</button>
+        </div>
+      </Link>
       <hr
         style={{
           marginTop: "30px",
