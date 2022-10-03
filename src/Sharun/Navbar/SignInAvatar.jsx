@@ -20,13 +20,13 @@ export default function SignInAvatar({imageUrl,flag,name}) {
 
 
   const { user, isAuthenticated, isLoading } = useAuth0();
-    const handleLogOut=()=>{
-        signOut(auth).then(()=>{
-            alert("Your Log out successfully")
-        }).catch((error)=>{
-            alert("log out fail")
-        })
-    }
+    // const handleLogOut=()=>{
+    //     signOut(auth).then(()=>{
+    //         alert("Your Log out successfully")
+    //     }).catch((error)=>{
+    //         alert("log out fail")
+    //     })
+    // }
   return (
     <Box p={["1rem", "1rem", "0rem"]}>
     {flag ? (
@@ -53,40 +53,14 @@ export default function SignInAvatar({imageUrl,flag,name}) {
           <br />
           <MenuDivider />
 
-          <MenuItem onClick={handleLogOut}> Logout </MenuItem> 
+          <MenuItem > <LogoutButton/> </MenuItem> 
         </MenuList>
       </Menu>
     ) : (
       ""
     )}
 
-    {
-      isAuthenticated?(<Menu>
-      <MenuButton
-        as={Button}
-        rounded={"full"}
-        variant={"link"}
-        cursor={"pointer"}
-        minW={0}
-      >
-        <Avatar name={user.name} src={user.picture} />
-      </MenuButton>
-      <MenuList alignItems={"center"}>
-        <br />
-        <Center>
-          <Avatar size={"xl"} name={user.name} src={user.picture}  />
-        </Center>
-        <br />
-        <Center>
-          <p>{user.name}</p>
-        </Center>
-        <br />
-        <MenuDivider />
-
-        <MenuItem onClick={handleLogOut}> <LogoutButton/> </MenuItem> 
-      </MenuList>
-    </Menu>):""
-    }
+   
   </Box>
   )
 }
