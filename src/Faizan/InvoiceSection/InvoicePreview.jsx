@@ -1,6 +1,7 @@
 import { DownloadIcon, EditIcon } from '@chakra-ui/icons';
 import { Box, Button, CircularProgress, Flex, Heading, Hide, Icon, Table, TableContainer, Tbody, Td, Text, Th, Thead, Tr } from '@chakra-ui/react';
 import axios from 'axios';
+import html2canvas  from 'html2canvas';
 import React, { useRef, useState } from 'react';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
@@ -27,6 +28,7 @@ function InvoicePreview(props) {
         }
      
     const createAndDownloadPdf = () => {
+        window.html2canvas=html2canvas
     var doc=new jsPDF("p","pt","a4")
     doc.html(Ref.current,{
         callback: function(pdf){
