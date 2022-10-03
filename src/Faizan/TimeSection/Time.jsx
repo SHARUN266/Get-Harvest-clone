@@ -48,7 +48,9 @@ function Time() {
      }
      const handleSubmit=()=>{
         setLoading(true)
-        axios.post("http://localhost:8080/time",state)
+        let data=state
+        data={...state,day:day}
+        axios.post("https://timetracker201rct.herokuapp.com/time",data)
          .then(()=>{
             getTimeList()
             onClose()
@@ -62,7 +64,7 @@ function Time() {
     const handleDelete=()=>{
         setLoading(true)
         const id=modalData
-        axios.delete(`http://localhost:8080/time/${id}`).then(()=>{
+        axios.delete(`https://timetracker201rct.herokuapp.com/time/${id}`).then(()=>{
            getTimeList()
            eonClose()
         })
@@ -79,7 +81,8 @@ function Time() {
      }
      const getTimeList=()=>{
         setLoading(true)
-        axios.get("http://localhost:8080/time").then((res)=>{
+        axios.get("https://timetracker201rct.herokuapp.com/time").then((res)=>{
+            console.log(res.data)
             const sundayData=res.data.filter((el)=>{
                 return el.day===0
             })
@@ -114,7 +117,7 @@ function Time() {
      const handleUpate=()=>{
         setLoading(true)
         const id=modalData
-        axios.patch(`http://localhost:8080/time/${id}`,state).then(()=>{
+        axios.patch(`https://timetracker201rct.herokuapp.com/time/${id}`,state).then(()=>{
            getTimeList()
            onClose()
         })
@@ -192,6 +195,36 @@ function Time() {
                                     })
                                     setSunData(sunData)
                                 }
+                                else if(d===1){
+                                    const monData=res.data.filter((el)=>{
+                                        return el.day===1
+                                    })
+                                    setMonData(monData)
+                                }
+                                else if(d===2){
+                                    const tueData=res.data.filter((el)=>{
+                                        return el.day===2
+                                    })
+                                    setTueData(tueData)
+                                }
+                                else if(d===3){
+                                    const wedData=res.data.filter((el)=>{
+                                        return el.day===3
+                                    })
+                                    setWedData(wedData)
+                                }
+                                else if(d===4){
+                                    const thurData=res.data.filter((el)=>{
+                                        return el.day===4
+                                    })
+                                    setThurData(thurData)
+                                }
+                                else if(d===5){
+                                    const friData=res.data.filter((el)=>{
+                                        return el.day===5
+                                    })
+                                    setFriData(friData)
+                                }
                             })    
                        
                           
@@ -208,7 +241,7 @@ function Time() {
                     clearInterval(Ref.current)
                     Ref.current=null;
                     setToggle(null)
-                }   
+                }
             
           }
 
@@ -218,7 +251,7 @@ function Time() {
                  
    }
    if(loading===true){
-    return <Box w="90%" display="flex" justifyContent="center" m="auto" my="50px"  pt="100px">
+    return <Box w="90%" display="flex" justifyContent="center" m="auto"  pt="100px">
          <CircularProgress isIndeterminate size='200px' color='#FA5D00' />
     </Box>
  }
@@ -326,13 +359,14 @@ function Time() {
                         <Table variant='simple'  >
                             <Tbody >
                             {sunData.map((el,i)=>{
+                                 const time=timeCheck(el.time)
                                 return <Tr key={el._id} >
                                 <Td w="70%"><Box>
                                     <Text fontWeight="500">{el.project}</Text>
                                     <Text>{el.type}</Text>
                                     </Box></Td>
-                                <Td>{el.time}.00</Td>
-                                <Td><Button px="40px" variant="outline" onClick={(e)=>handleStart(e,i)}>
+                                <Td>{time}</Td>
+                                <Td><Button px="40px" variant="outline" onClick={(e)=>handleStart(e,el._id,el.time,0)}>
                                     
                                     Start </Button></Td>
                                 <Td>
@@ -354,13 +388,14 @@ function Time() {
                         <Table variant='simple'  >
                             <Tbody >
                             {monData.map((el,i)=>{
+                                 const time=timeCheck(el.time)
                                 return <Tr key={el._id} >
                                 <Td w="70%"><Box>
                                     <Text fontWeight="500">{el.project}</Text>
                                     <Text>{el.type}</Text>
                                     </Box></Td>
-                                <Td>{el.time}.00</Td>
-                                <Td><Button px="40px" variant="outline" onClick={(e)=>handleStart(e,i)}>
+                                <Td>{time}</Td>
+                                <Td><Button px="40px" variant="outline" onClick={(e)=>handleStart(e,el._id,el.time,1)}>
                                     
                                     Start </Button></Td>
                                 <Td>
@@ -382,13 +417,14 @@ function Time() {
                         <Table variant='simple'  >
                             <Tbody >
                             {tueData.map((el,i)=>{
+                                 const time=timeCheck(el.time)
                                 return <Tr key={el._id} >
                                 <Td w="70%"><Box>
                                     <Text fontWeight="500">{el.project}</Text>
                                     <Text>{el.type}</Text>
                                     </Box></Td>
-                                <Td>{el.time}.00</Td>
-                                <Td><Button px="40px" variant="outline" onClick={(e)=>handleStart(e,i)}>
+                                <Td>{time}</Td>
+                                <Td><Button px="40px" variant="outline" onClick={(e)=>handleStart(e,el._id,el.time,2)}>
                                     
                                     Start </Button></Td>
                                 <Td>
@@ -409,13 +445,14 @@ function Time() {
                         <Table variant='simple'  >
                             <Tbody >
                             {wedData.map((el,i)=>{
+                                 const time=timeCheck(el.time)
                                 return <Tr key={el._id} >
                                 <Td w="70%"><Box>
                                     <Text fontWeight="500">{el.project}</Text>
                                     <Text>{el.type}</Text>
                                     </Box></Td>
-                                <Td>{el.time}.00</Td>
-                                <Td><Button px="40px" variant="outline" onClick={(e)=>handleStart(e,i)}>
+                                <Td>{time}</Td>
+                                <Td><Button px="40px" variant="outline" onClick={(e)=>handleStart(e,el._id,el.time,3)}>
                                     
                                     Start </Button></Td>
                                 <Td>
@@ -437,13 +474,14 @@ function Time() {
                         <Table variant='simple'  >
                             <Tbody >
                             {thurData.map((el,i)=>{
+                                 const time=timeCheck(el.time)
                                 return <Tr key={el._id} >
                                 <Td w="70%"><Box>
                                     <Text fontWeight="500">{el.project}</Text>
                                     <Text>{el.type}</Text>
                                     </Box></Td>
-                                <Td>{el.time}.00</Td>
-                                <Td><Button px="40px" variant="outline" onClick={(e)=>handleStart(e,i)}>
+                                <Td>{time}</Td>
+                                <Td><Button px="40px" variant="outline" onClick={(e)=>handleStart(e,el._id,el.time,4)}>
                                     
                                     Start </Button></Td>
                                 <Td>
@@ -465,13 +503,14 @@ function Time() {
                         <Table variant='simple'  >
                             <Tbody >
                             {friData.map((el,i)=>{
+                                 const time=timeCheck(el.time)
                                 return <Tr key={el._id} >
                                 <Td w="70%"><Box>
                                     <Text fontWeight="500">{el.project}</Text>
                                     <Text>{el.type}</Text>
                                     </Box></Td>
-                                <Td>{el.time}.00</Td>
-                                <Td><Button px="40px" variant="outline" onClick={(e)=>handleStart(e,i)}>
+                                <Td>{time}</Td>
+                                <Td><Button px="40px" variant="outline" onClick={(e)=>handleStart(e,el._id,el.time,5)}>
                                     
                                     Start </Button></Td>
                                 <Td>

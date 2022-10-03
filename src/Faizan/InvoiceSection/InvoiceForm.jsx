@@ -62,23 +62,16 @@ class InvoiceForm extends Component {
     })
     this.setState({...this.state})
   }
-  // createAndDownloadPdf = () => {
-  //   axios.post('/invoice/create-pdf', this.state)
-  //     .then(() => axios.get('/fetch-pdf', { responseType: 'blob' }))
-  //     .then((res) => {
-  //       const pdfBlob = new Blob([res.data], { type: 'application/pdf' });
-
-  //       saveAs(pdfBlob, 'newPdf.pdf');
-        
-  //     })
-  // }
+ 
 
   handleSave=()=>{
    if(this.state.client!=="client" && this.state.client!==""){
-    axios.post("http://localhost:8080/invoice",this.state)
-    .then((res)=>{
-     this.flag=true
-     this.setState({...this.state})
+    var data=this.state
+    data={...data,clientdata:""}
+    axios.post("https://timetracker201rct.herokuapp.com/invoice",data)
+    .then(()=>{
+      this.flag=true
+      this.setState({...this.state})
     }).catch((err)=>{
       alert("Please fill the form correctly")
     })
@@ -106,7 +99,7 @@ class InvoiceForm extends Component {
     }
     return (
 
-      <Box w="90%" m="auto" my="30px">
+      <Box w="90%" m="auto" my="50px">
         <Heading fontWeight="500" borderBottom="1px solid #dddd" pb="20px">New invoice for Example Client</Heading>
          
          <Flex w="100%" mt="30px">
@@ -135,7 +128,7 @@ class InvoiceForm extends Component {
             </Flex>
           <Flex justify="space-betwen" direction={["column","row","row"]} alignItems="center" mb="10px" >
               <Text fontWeight="500"  width={["100%","50%","40%"]}>Invoice For</Text>
-              {/* <Input type="text" focusBorderColor="black" name="company" isRequired onChange={this.handleChange}/> */}
+             
               <Select name="client" focusBorderColor="black" onChange={this.handleChange} placeholder='Select Client' mb="10px">
                 {this.state.clientdata && this.state.clientdata.map((el)=>{
                   return  <option key={el._id} value={el.client}>{el.client}</option>
