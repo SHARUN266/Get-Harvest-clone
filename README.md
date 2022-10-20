@@ -34,7 +34,14 @@ We have done this project with group of 5 members and build the clone of a Get H
 ## Glimpse of the project
 # 1. Landing Page
 
-![image](https://user-images.githubusercontent.com/101327895/194276641-e6a22764-31e3-48ba-8aec-0f91b5ff3c58.png)
+
+
+<video controls loop>
+  <source src="https://user-images.githubusercontent.com/101327895/196938604-8f8248f3-c188-4325-899f-9728c2633fa8.mp4" type="video/mp4">
+ 
+</video>
+
+
 
 
 
