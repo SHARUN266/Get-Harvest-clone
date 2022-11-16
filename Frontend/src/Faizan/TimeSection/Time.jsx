@@ -171,7 +171,7 @@ function Time() {
                     e.target.style.backgroundColor="black"
                     e.target.style.color="White"
                     
-                    e.target.innerHTML=`<Image w="100px" mr="10px" src="https://thumbs.gfycat.com/BossyImmenseDuck-size_restricted.gif"/>Stop`
+                    e.target.innerHTML=`<Image w="100%" mr="10px" src="https://thumbs.gfycat.com/BossyImmenseDuck-size_restricted.gif"/>Stop`
                     Ref.current=setInterval(()=>{
                         count=count+0.01
                         let num=count+""
