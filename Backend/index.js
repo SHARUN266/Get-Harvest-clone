@@ -20,6 +20,7 @@ app.use('/projects',projectRouter);
 
 
 app.listen(port,async ()=>{
+    console.log("Your server is running")
     await mongoose.connect(process.env.DATABASE,{
         useNewUrlParser:true,
         useUnifiedTopology:true

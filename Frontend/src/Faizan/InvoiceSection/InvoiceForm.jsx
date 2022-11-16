@@ -26,7 +26,7 @@ class InvoiceForm extends Component {
     ]
   }
   getProject=()=>{
-    axios.get("https://getharvest-fake-api.herokuapp.com/projects").then((res)=>{
+    axios.get("https://toga-caterpillar.cyclic.app/projects").then((res)=>{
         this.setState({...this.state,clientdata:res.data})
     }).catch((err)=>{
       console.log("failed")
@@ -68,7 +68,7 @@ class InvoiceForm extends Component {
    if(this.state.client!=="client" && this.state.client!==""){
     var data=this.state
     data={...data,clientdata:""}
-    axios.post("https://timetracker201rct.herokuapp.com/invoice",data)
+    axios.post("https://toga-caterpillar.cyclic.app/invoice",data)
     .then(()=>{
       this.flag=true
       this.setState({...this.state})

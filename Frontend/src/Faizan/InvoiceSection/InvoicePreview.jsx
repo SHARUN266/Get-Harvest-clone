@@ -14,7 +14,7 @@ function InvoicePreview(props) {
     const Ref=useRef(null)
     const getInvoice = () => {
         setLoading(true)
-        axios.get('https://timetracker201rct.herokuapp.com/invoice')
+        axios.get('https://toga-caterpillar.cyclic.app/invoice')
             .then((res)=>{
                 
                 let total=0

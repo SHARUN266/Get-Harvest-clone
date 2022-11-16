@@ -17,7 +17,7 @@ import WhyHarvest from "./Components/Arsalan/WhyHarvest";
 import Pricing from "./Components/pricing/Pricing";
 import { Features } from "./Components/features/feature.jsx";
 import { Customers } from "./Components/customers/Customers";
-import Invoice from "./Faizan/InvoiceSection/invoice";
+import Invoice from "./Faizan/InvoiceSection/Invoice";
 import Time from "./Faizan/TimeSection/Time";
 import InvoiceForm from "./Faizan/InvoiceSection/InvoiceForm";
 import InvoicePreview from "./Faizan/InvoiceSection/InvoicePreview";

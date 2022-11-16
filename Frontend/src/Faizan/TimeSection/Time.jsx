@@ -50,7 +50,7 @@ function Time() {
         setLoading(true)
         let data=state
         data={...state,day:day}
-        axios.post("https://timetracker201rct.herokuapp.com/time",data)
+        axios.post("https://toga-caterpillar.cyclic.app/time",data)
          .then(()=>{
             getTimeList()
             onClose()
@@ -64,7 +64,7 @@ function Time() {
     const handleDelete=()=>{
         setLoading(true)
         const id=modalData
-        axios.delete(`https://timetracker201rct.herokuapp.com/time/${id}`).then(()=>{
+        axios.delete(`https://toga-caterpillar.cyclic.app/time/${id}`).then(()=>{
            getTimeList()
            eonClose()
         })
@@ -74,14 +74,14 @@ function Time() {
 
      const getProject=()=>{
         setLoading(true)
-        axios.get("https://getharvest-fake-api.herokuapp.com/projects").then((res)=>{
+        axios.get("https://toga-caterpillar.cyclic.app/projects").then((res)=>{
             setProject(res.data)
             setLoading(false)
         })
      }
      const getTimeList=()=>{
         setLoading(true)
-        axios.get("https://timetracker201rct.herokuapp.com/time").then((res)=>{
+        axios.get("https://toga-caterpillar.cyclic.app/time").then((res)=>{
             console.log(res.data)
             const sundayData=res.data.filter((el)=>{
                 return el.day===0
@@ -117,7 +117,7 @@ function Time() {
      const handleUpate=()=>{
         setLoading(true)
         const id=modalData
-        axios.patch(`https://timetracker201rct.herokuapp.com/time/${id}`,state).then(()=>{
+        axios.patch(`https://toga-caterpillar.cyclic.app/time/${id}`,state).then(()=>{
            getTimeList()
            onClose()
         })
@@ -181,8 +181,8 @@ function Time() {
                         }
                          count=Number(count).toFixed(2)
                          count=Number(count)
-                        axios.patch(`https://timetracker201rct.herokuapp.com/time/${id}`,{time:count}).then(()=>{
-                            axios.get("https://timetracker201rct.herokuapp.com/time").then((res)=>{
+                        axios.patch(`https://toga-caterpillar.cyclic.app/time/${id}`,{time:count}).then(()=>{
+                            axios.get("https://toga-caterpillar.cyclic.app/time").then((res)=>{
                                 if(d===6){
                                     const satData=res.data.filter((el)=>{
                                         return el.day===6

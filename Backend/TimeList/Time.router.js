@@ -5,7 +5,7 @@ const Time = require("./Time.model");
 
 app.get("/", async (req, res) => {
   let p = await Time.find();
-  res.send(p);
+  res.send(p);y
 });
 
 app.post("/", async (req, res) => {
