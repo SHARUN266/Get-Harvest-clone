@@ -1,6 +1,7 @@
+require('dotenv').config();
 const express=require("express");
 const bodyParser= require("body-parser");
-
+const projectRouter=require('./Projects/projects.router');
 const cors =require("cors");
 const mongoose=require('mongoose');
 const InvoiceRouter=require('./InvoiceList/Invoice.router');
@@ -15,16 +16,12 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 app.use('/invoice',InvoiceRouter);
 app.use('/time',TimeRouter);
+app.use('/projects',projectRouter);
 
-// app.get('/fetchPdf',(req,res)=>{
-   
-//     try{
-//         res.sendFile(`${__dirname}/Invoice.pdf`)
-//     }catch(err){
-//         res.send(err.message)
-//     }
-//  })
 
 app.listen(port,async ()=>{
-    await mongoose.connect('mongodb+srv://faizanghani2222:27102001@cluster0.i1i38gd.mongodb.net/test');
+    await mongoose.connect(process.env.DATABASE,{
+        useNewUrlParser:true,
+        useUnifiedTopology:true
+     });
  });
