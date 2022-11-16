@@ -51,8 +51,9 @@ const searchHandler=async (q)=>{
 
 /// AuthCode
 const ChangeFlagStateToTrue=()=>{
-
+  navigate("/time")
   setFlag(true)
+  
 }
 const ChangeFlagStateToFalse=()=>{
   setFlag(false)

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Stack, Text,Alert,AlertIcon, FormLabel, Spacer } from "@chakra-ui/react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { FormControl, Input, Button } from "@chakra-ui/react";
@@ -6,6 +6,7 @@ import { useState } from "react";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../BackEnd/Firebase";
 import { useNavigate } from "react-router-dom";
+import { ProjectData } from "../../Context/ProjectDataContext";
 
 /**
  * Returns an array of objects containing the label, type, and name of each input field.
@@ -39,11 +40,7 @@ const formNameLabel = [
   },
 ];
 export default function FormSignUp() {
-  /**
-   * A function that handles the submission of the form.
-   * @param event - The event object.
-   */
-  const { isAuthenticated } = useAuth0();
+   const {flag}=useContext(ProjectData)
   /**
    * Navigates to the given URL.
    * @param url - the URL to navigate to.
@@ -65,9 +62,9 @@ export default function FormSignUp() {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (isAuthenticated) {
+    if (flag) {
       alert("You are already Sign Up!");
-      navigate("/");
+      navigate("/time");
     } else {
       if (
         values.firstname === "" ||

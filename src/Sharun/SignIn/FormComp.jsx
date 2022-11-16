@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { FormControl, Text, Input, Stack, Button,Alert,AlertIcon } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../BackEnd/Firebase";
 import { useAuth0 } from "@auth0/auth0-react";
+import { ProjectData } from "../../Context/ProjectDataContext";
 /**
  * A function that handles the state of the email and password fields.
  * @param values - The state of the email and password fields.
@@ -11,7 +12,7 @@ import { useAuth0 } from "@auth0/auth0-react";
  * @returns None
  */
 export default function FormComp() {
-  const { isAuthenticated } = useAuth0();
+  const {flag}=useContext(ProjectData)
   const navigate = useNavigate();
   const [isLoading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -41,9 +42,9 @@ export default function FormComp() {
    */
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (isAuthenticated) {
+    if (flag) {
       alert("You are already login!");
-      navigate("/");
+      navigate("/time");
     } else {
       if (values.email === "") {
         setError("Please! Enter your email");

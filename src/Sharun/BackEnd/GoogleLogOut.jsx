@@ -1,11 +1,22 @@
 import React from "react";
-import { useAuth0 } from "@auth0/auth0-react";
+
+import { signOut } from "firebase/auth";
+import { auth } from "./Firebase";
 
 const LogoutButton = () => {
-  const { logout } = useAuth0();
+
+  function logOut(){
+    signOut(auth).then(() => {
+      // Sign-out successful.
+    }).catch((error) => {
+      // An error happened.
+    });
+    alert("Logout successfully!")
+  }
+
 
   return (
-    <button onClick={() => logout({ returnTo: window.location.origin })}>
+    <button onClick={logOut}>
       Logout
     </button>
   );

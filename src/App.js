@@ -1,4 +1,4 @@
-import Dashboard from "./Components/Arsalan/Dashboard/Dashboard";
+
 import Footer from "./Sharun/Footer/Footer";
 import Navbar from "./Sharun/Navbar/Navbar";
 
@@ -115,7 +115,7 @@ function App() {
           path="/invoice"
           element={
             <>
-            <Box h={["auto","auto","auto"]}>
+            <Box h={"auto"}>
               <Navbar2 imageUrl={userImage} flag={flag} name={name} />
               <Invoice />
               </Box>
@@ -126,7 +126,7 @@ function App() {
           path="/invoice/new"
           element={
             <>
-            <Box h={["auto","auto","auto"]}>
+            <Box h={"auto"}>
               <Navbar2 imageUrl={userImage} flag={flag} name={name} />
               <InvoiceForm />
               </Box>
@@ -151,7 +151,7 @@ function App() {
           path="/time"
           element={
             <>
-            <Box h={["auto","auto","auto"]}>
+            <Box h={"auto"} mb="30%">
             <PrivateRoute>
               <Navbar2 imageUrl={userImage} flag={flag} name={name} />
               <Time />
